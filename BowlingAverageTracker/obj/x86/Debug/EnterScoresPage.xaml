@@ -1,0 +1,77 @@
+﻿<Page x:ConnectionId='1'
+    x:Class="BowlingAverageTracker.EnterScoresPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:local="using:BowlingAverageTracker"
+    xmlns:localDto="using:BowlingAverageTracker.Dto"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    DataContext="{Binding Path=EnterScoresPage, Source={StaticResource ViewModelLocator}}">
+
+    <Page.BottomAppBar>
+        <CommandBar Height="52" Margin="1,0" VerticalAlignment="Stretch">
+            <CommandBar.Content>
+                <Grid/>
+            </CommandBar.Content>
+            <AppBarButton x:ConnectionId='2' x:Name="AddGameBtn" Icon="Add" Label="Add Game"                />
+        </CommandBar>
+    </Page.BottomAppBar>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="55"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:ConnectionId='3' Grid.Row="0" Text="Enter Scores" x:Name="SelectSeries" TextWrapping="Wrap" FontStyle="Italic" FontStretch="Normal"
+                   IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" ManipulationMode="None"
+                   FontSize="29.333" TextAlignment="Center" RenderTransformOrigin="0.484,-0.49"
+                   d:LayoutOverrides="LeftMargin, RightMargin, LeftPosition, RightPosition" Margin="0,10,0,25" Foreground="Black"/>
+        <TextBlock x:ConnectionId='4' Grid.Row="1" x:Name="LeagueName" TextWrapping="Wrap" FontFamily="Arial Black" Margin="10,0" FontSize="18">
+           <Run x:ConnectionId='13'                                                    />
+           <Run Text=" - "/>
+           <Run x:ConnectionId='14'                                             />
+        </TextBlock>
+        <DatePicker x:ConnectionId='5' Grid.Row="3" x:Name="SeriesDate" Date="{Binding ViewModel.Series.Date.Date}" HorizontalAlignment="Center" Margin="37,0,27,0"
+                    VerticalAlignment="Top" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"                                 FontSize="24"/>
+        <ListView x:ConnectionId='6' Grid.Row="5" x:Name="GameList" IsItemClickEnabled="False" IsHoldingEnabled="True"                                        Margin="10,10,10,10"
+                  FontSize="24" IsDoubleTapEnabled="False" IsRightTapEnabled="False">
+            <ListView.ItemTemplate>
+                <DataTemplate                           >
+                    <StackPanel x:ConnectionId='9' Orientation="Horizontal" IsRightTapEnabled="True"                               >
+                        <TextBlock FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Run Text="Game "/>
+                            <Run x:ConnectionId='11'                                                                      />
+                        </TextBlock>
+                        <TextBox x:ConnectionId='10' Grid.Row="2" x:Name="Score" InputScope="Number" Height="35" Margin="15,17,0,17" TextWrapping="Wrap"                      
+                                 VerticalAlignment="Center" HorizontalAlignment="Center" Width="100" FontSize="20"                           />
+                        <FlyoutBase.AttachedFlyout>
+                            <Flyout>
+                                <TextBlock x:ConnectionId='12' TextWrapping="Wrap" Text="Delete Game"                       />
+                            </Flyout>
+                        </FlyoutBase.AttachedFlyout>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel Grid.Row="6" Orientation="Vertical">
+            <TextBlock TextWrapping="Wrap" FontFamily="Arial Black" Margin="10,0" FontSize="18.667">
+               <Run Text="Total Pins: "/>
+               <Run x:ConnectionId='8' x:Name="SeriesTotalPins"                                           />
+            </TextBlock>
+            <TextBlock TextWrapping="Wrap" FontFamily="Arial Black" Margin="10,0" FontSize="18.667">
+               <Run Text="Series Average: "/>
+               <Run x:ConnectionId='7' x:Name="SeriesAverageText"                                               />
+            </TextBlock>
+        </StackPanel>
+    </Grid>
+
+</Page>
+
