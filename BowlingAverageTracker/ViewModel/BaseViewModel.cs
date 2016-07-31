@@ -1,21 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
-using System.Threading.Tasks;
-using System.Collections.ObjectModel;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
-using Windows.UI.Xaml.Navigation;
-using GalaSoft.MvvmLight.Ioc;
-using Windows.Storage;
-using SQLite.Net;
-using SQLite.Net.Platform.WinRT;
-using SQLiteNetExtensions.Extensions;
-using GalaSoft.MvvmLight;
 using Microsoft.Practices.ServiceLocation;
-using BowlingAverageTracker.Dto;
+using SQLite.Net;
 using SQLite.Net.Async;
+using SQLite.Net.Platform.WinRT;
+using System;
+using System.IO;
+using Windows.Storage;
 
 namespace BowlingAverageTracker.ViewModel
 {

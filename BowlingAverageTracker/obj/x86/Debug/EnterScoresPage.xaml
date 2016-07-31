@@ -41,8 +41,8 @@
         </TextBlock>
         <DatePicker x:ConnectionId='5' Grid.Row="3" x:Name="SeriesDate" Date="{Binding ViewModel.Series.Date.Date}" HorizontalAlignment="Center" Margin="37,0,27,0"
                     VerticalAlignment="Top" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"                                 FontSize="24"/>
-        <ListView x:ConnectionId='6' Grid.Row="5" x:Name="GameList" IsItemClickEnabled="False" IsHoldingEnabled="True"                                        Margin="10,10,10,10"
-                  FontSize="24" IsDoubleTapEnabled="False" IsRightTapEnabled="False">
+        <ListView x:ConnectionId='6' Grid.Row="5" x:Name="GameList" IsItemClickEnabled="False" IsHoldingEnabled="False"                                        Margin="10,10,10,10"
+                  FontSize="24" IsDoubleTapEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" IsMultiSelectCheckBoxEnabled="False">
             <ListView.ItemTemplate>
                 <DataTemplate                           >
                     <StackPanel x:ConnectionId='9' Orientation="Horizontal" IsRightTapEnabled="True"                               >
@@ -54,7 +54,7 @@
                                  VerticalAlignment="Center" HorizontalAlignment="Center" Width="100" FontSize="20"                           />
                         <FlyoutBase.AttachedFlyout>
                             <Flyout>
-                                <TextBlock x:ConnectionId='12' TextWrapping="Wrap" Text="Delete Game"                       />
+                                <TextBlock x:ConnectionId='12' TextWrapping="Wrap" FontSize="22" Text="Delete Game"                       />
                             </Flyout>
                         </FlyoutBase.AttachedFlyout>
                     </StackPanel>
@@ -68,7 +68,7 @@
             </TextBlock>
             <TextBlock TextWrapping="Wrap" FontFamily="Arial Black" Margin="10,0" FontSize="18.667">
                <Run Text="Series Average: "/>
-               <Run x:ConnectionId='7' x:Name="SeriesAverageText"                                               />
+               <Run x:ConnectionId='7' x:Name="SeriesAverageText"                                         />
             </TextBlock>
         </StackPanel>
     </Grid>

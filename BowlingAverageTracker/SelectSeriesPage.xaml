@@ -26,20 +26,23 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="55"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="Select Series" x:Name="SelectSeries" TextWrapping="Wrap" FontStyle="Italic" FontStretch="Normal" IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" ManipulationMode="None" FontSize="29.333" TextAlignment="Center" RenderTransformOrigin="0.484,-0.49" d:LayoutOverrides="LeftMargin, RightMargin, LeftPosition, RightPosition" Margin="0,10,0,25" Foreground="Black"/>
+        <TextBlock Grid.Row="0" Text="Select Series" x:Name="SelectSeries" TextWrapping="Wrap" FontStyle="Italic" FontStretch="Normal" IsDoubleTapEnabled="False"
+                   IsHoldingEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" ManipulationMode="None" FontSize="29.333" TextAlignment="Center"
+                   RenderTransformOrigin="0.484,-0.49" d:LayoutOverrides="LeftMargin, RightMargin, LeftPosition, RightPosition" Margin="0,10,0,25" Foreground="Black"/>
         <TextBlock Grid.Row="1" x:Name="BowlerLeagueName" TextWrapping="Wrap" FontFamily="Arial Black" Margin="10,0" FontSize="18">
             <Run Text="{x:Bind ViewModel.League.Bowler.Name}"/>
             <Run Text=" - "/>
             <Run Text="{x:Bind ViewModel.League.Name}"/>
         </TextBlock>
-        <ListView Grid.Row="2" x:Name="SeriesList" IsItemClickEnabled="True" IsHoldingEnabled="True" ItemsSource="{x:Bind ViewModel.Series}" Margin="10,10,10,10" FontSize="24" IsDoubleTapEnabled="False" IsRightTapEnabled="False">
+        <ListView Grid.Row="2" x:Name="SeriesList" IsItemClickEnabled="True" IsHoldingEnabled="True" ItemsSource="{x:Bind ViewModel.Series}" Margin="10,10,10,10"
+                  FontSize="24" IsDoubleTapEnabled="False" IsRightTapEnabled="False">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="localDto:Series">
                     <StackPanel IsRightTapEnabled="True" RightTapped="Series_RightTapped">
                         <TextBlock Text="{x:Bind DateString}" FontSize="24"/>
                         <TextBlock FontSize="13.333">
                             <Run Text="   Average: "/>
-                            <Run Text="{x:Bind AverageString}"/>
+                            <Run Text="{x:Bind Average}"/>
                         </TextBlock>
                         <FlyoutBase.AttachedFlyout>
                             <Flyout>

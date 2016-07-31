@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SQLite.Net;
-using SQLiteNetExtensions.Extensions;
+﻿using BowlingAverageTracker.Dto;
 using GalaSoft.MvvmLight.Command;
-using BowlingAverageTracker.Dto;
+using SQLite.Net;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace BowlingAverageTracker.ViewModel
 {
     public class SelectLeagueViewModel : BaseViewModel
     {
-        private static string leagueQuery = "select * from League where BowlerId = ? order by Name asc, Id asc";
+        private static string leagueQuery = "select * from League where BowlerId = ? order by lower(Name) asc, Id asc";
+        private static string seriesCountQuery = "select count(*) as Value from Series where LeagueId = ?";
         private ObservableCollection<League> leagues = new ObservableCollection<League>();
         public ObservableCollection<League> Leagues { get { return this.leagues; } }
         public Bowler Bowler { get; set; }
@@ -32,6 +29,20 @@ namespace BowlingAverageTracker.ViewModel
                     l.Bowler = Bowler;
                     Leagues.Add(l);
                     Bowler.Leagues.Add(l);
+                }
+                addSeriesCounts(conn);
+            }
+        }
+
+        private void addSeriesCounts(SQLiteConnection conn)
+        {
+            Series dummySeries = new Series();
+            foreach (League l in Leagues)
+            {
+                foreach (IntWrapper wrapper in conn.Query<IntWrapper>(seriesCountQuery, l.Id))
+                {
+                    for (int i = 0; i < wrapper.Value; ++i)
+                        l.Series.Add(dummySeries);
                 }
             }
         }

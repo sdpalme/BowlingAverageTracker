@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
+﻿using BowlingAverageTracker.Dto;
 using SQLite.Net;
-using BowlingAverageTracker.Dto;
+using System.Collections.ObjectModel;
 
 namespace BowlingAverageTracker.ViewModel
 {

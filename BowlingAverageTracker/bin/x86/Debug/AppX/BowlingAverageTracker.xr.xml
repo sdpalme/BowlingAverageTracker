@@ -46,26 +46,6 @@
     <RootType FullName="Windows.UI.Xaml.Controls.RowDefinition">
       <RootProperty Name="Height" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
-      <RootProperty Name="Height" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="TextWrapping" />
-      <RootProperty Name="Text" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="InputScope" />
-      <RootProperty Name="FontSize" />
-      <RootEvent Name="TextChanged" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.Button">
-      <RootProperty Name="Content" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="Height" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
       <RootProperty Name="Margin" />
       <RootProperty Name="TextWrapping" />
@@ -86,6 +66,27 @@
       <RootProperty Name="FontFamily" />
       <RootProperty Name="Inlines" />
       <RootEvent Name="Tapped" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
+      <RootProperty Name="Height" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="TextWrapping" />
+      <RootProperty Name="Text" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="InputScope" />
+      <RootProperty Name="FontSize" />
+      <RootEvent Name="TextChanged" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Button">
+      <RootProperty Name="Content" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Height" />
+      <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.BindExtension">
       <RootProperty Name="Converter" />
@@ -119,6 +120,8 @@
       <RootProperty Name="FontSize" />
       <RootProperty Name="IsDoubleTapEnabled" />
       <RootProperty Name="IsRightTapEnabled" />
+      <RootProperty Name="IsTapEnabled" />
+      <RootProperty Name="IsMultiSelectCheckBoxEnabled" />
       <RootProperty Name="ItemTemplate" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">

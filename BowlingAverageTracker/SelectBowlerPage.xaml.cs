@@ -1,22 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+﻿using BowlingAverageTracker.Dto;
+using BowlingAverageTracker.ViewModel;
+using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-using BowlingAverageTracker.Dto;
-using BowlingAverageTracker.ViewModel;
-
-using SQLiteNetExtensions.Attributes;
-using SQLite.Net.Attributes;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -38,17 +26,16 @@ namespace BowlingAverageTracker
         private void AddBowler(object sender, RoutedEventArgs e)
         {
             Bowler bowler = new Bowler();
-            bowler.Name = "Nick";
             ViewModel.Bowlers.Add(bowler);
             ViewModel.create(bowler);
+            ViewModel.Navigate<EditNameViewModel>(bowler);
         }
 
-        private void HoldBowler(object sender, HoldingRoutedEventArgs e)
+        private void Bowler_Rename(object sender, TappedRoutedEventArgs e)
         {
-            Type type = sender.GetType();
-            Bowler b = new Bowler();
-            b.Name = "Karen";
-            ViewModel.Bowlers.Add(b);
+            TextBlock block = sender as TextBlock;
+            Bowler bowler = block.DataContext as Bowler;
+            ViewModel.Navigate<EditNameViewModel>(bowler);
         }
 
         private void Bowler_RightTapped(object sender, RightTappedRoutedEventArgs e)

@@ -1,30 +1,20 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SQLite.Net;
-using SQLiteNetExtensions.Extensions;
+﻿using BowlingAverageTracker.Dto;
 using GalaSoft.MvvmLight.Command;
-using BowlingAverageTracker.Dto;
+using SQLite.Net;
+using System;
+using System.Collections.ObjectModel;
 
 namespace BowlingAverageTracker.ViewModel
 {
     public class SelectSeriesViewModel : BaseViewModel
     {
-        private static string seriesQuery = "select * from Series where LeagueId = ? order by Date desc, Id asc";
+        private static string seriesQuery = "select * from Series where LeagueId = ? order by Date desc, Id desc";
         private ObservableCollection<Series> series = new ObservableCollection<Series>();
         public ObservableCollection<Series> Series { get { return this.series; } }
         public League League { get; set; }
 
         public SelectSeriesViewModel()
         {
-            Series s = new Series();
-            s.Date = new DateTimeOffset();
-            Series.Add(s);
-            Series s2 = new Series();
-            s2.Date = new DateTimeOffset();
-            Series.Add(s2);
         }
 
         public void populateSeries()

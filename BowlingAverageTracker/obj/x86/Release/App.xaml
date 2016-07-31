@@ -10,6 +10,7 @@
         <ResourceDictionary>
             <vm:WindowsViewModelLocator x:Key="ViewModelLocator" />
             <dto:ItemClickEventArgsConverter x:Key="ItemClickEventArgsConverter" />
+            <vm:GameRowNumberConverter x:Key="GameRowNumberConverter"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

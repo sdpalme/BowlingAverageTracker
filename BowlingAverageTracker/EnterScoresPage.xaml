@@ -41,8 +41,8 @@
         </TextBlock>
         <DatePicker Grid.Row="3" x:Name="SeriesDate" Date="{Binding ViewModel.Series.Date.Date}" HorizontalAlignment="Center" Margin="37,0,27,0"
                     VerticalAlignment="Top" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" DateChanged="SeriesDateChanged" FontSize="24"/>
-        <ListView Grid.Row="5" x:Name="GameList" IsItemClickEnabled="False" IsHoldingEnabled="True" ItemsSource="{x:Bind ViewModel.Games}" Margin="10,10,10,10"
-                  FontSize="24" IsDoubleTapEnabled="False" IsRightTapEnabled="False">
+        <ListView Grid.Row="5" x:Name="GameList" IsItemClickEnabled="False" IsHoldingEnabled="False" ItemsSource="{x:Bind ViewModel.Games}" Margin="10,10,10,10"
+                  FontSize="24" IsDoubleTapEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" IsMultiSelectCheckBoxEnabled="False">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="localDto:Game">
                     <StackPanel Orientation="Horizontal" IsRightTapEnabled="True" RightTapped="Game_RightTapped">
@@ -54,7 +54,7 @@
                                  VerticalAlignment="Center" HorizontalAlignment="Center" Width="100" FontSize="20" TextChanged="ScoreChanged"/>
                         <FlyoutBase.AttachedFlyout>
                             <Flyout>
-                                <TextBlock TextWrapping="Wrap" Text="Delete Game" Tapped="Game_Deleted" />
+                                <TextBlock TextWrapping="Wrap" FontSize="22" Text="Delete Game" Tapped="Game_Deleted" />
                             </Flyout>
                         </FlyoutBase.AttachedFlyout>
                     </StackPanel>
@@ -68,7 +68,7 @@
             </TextBlock>
             <TextBlock TextWrapping="Wrap" FontFamily="Arial Black" Margin="10,0" FontSize="18.667">
                <Run Text="Series Average: "/>
-               <Run x:Name="SeriesAverageText" Text="{x:Bind ViewModel.Series.AverageString}"/>
+               <Run x:Name="SeriesAverageText" Text="{x:Bind ViewModel.Series.Average}"/>
             </TextBlock>
         </StackPanel>
     </Grid>

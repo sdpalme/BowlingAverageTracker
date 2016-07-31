@@ -6,16 +6,19 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    DataContext="{Binding Path=EditNamePage, Source={StaticResource ViewModelLocator}}">
+    DataContext="{Binding Path=EditNamePage, Source={StaticResource ViewModelLocator}}" Loaded="pageLoaded">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="65"/>
             <RowDefinition Height="75"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="55"/>
         </Grid.RowDefinitions>
-        <TextBox Grid.Row="2" x:Name="Name" Height="46" Margin="20,20,20,260" TextWrapping="Wrap" Text="{x:Bind ViewModel.Dto.Name}" VerticalAlignment="Center" HorizontalAlignment="Center" Width="275" InputScope="Text" FontSize="24"/>
-        <Button Grid.Row="2" x:Name="SaveBtn" Content="Save" HorizontalAlignment="Center" Margin="85,206,84,250" VerticalAlignment="Center" Width="130" Height="40"/>
-        <TextBlock x:Name="Title" Margin="43,10,42,10" Grid.Row="1" TextWrapping="Wrap" Text="Name" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="32"/>
+        <TextBlock x:Name="Title" Margin="43,10,42,10" Grid.Row="0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Center" HorizontalAlignment="Center"
+                   FontSize="29.333" FontStyle="Italic"/>
+        <TextBox Grid.Row="1" x:Name="NameBox" Height="46" Margin="20,20,20,260" TextWrapping="Wrap" Text="{x:Bind ViewModel.Dto.Name}" VerticalAlignment="Center"
+                 HorizontalAlignment="Center" Width="275" InputScope="Text" FontSize="24"/>
+        <Button Grid.Row="1" x:Name="SaveBtn" Content="Save" HorizontalAlignment="Center" Margin="85,206,84,250" VerticalAlignment="Center" Width="130" Height="40"
+                Click="SaveBtn_Click"/>
     </Grid>
 </Page>

@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GalaSoft.MvvmLight;
-using SQLite.Net;
-using BowlingAverageTracker.Dto;
+﻿using BowlingAverageTracker.Dto;
 using GalaSoft.MvvmLight.Command;
+using SQLite.Net;
+using System.Collections.ObjectModel;
 
 namespace BowlingAverageTracker.ViewModel
 {
     public class SelectBowlerViewModel : BaseViewModel
     {
-        private static string bowlerQuery = "select * from Bowler order by Name asc, Id asc";
+        private static string bowlerQuery = "select * from Bowler order by lower(Name) asc, Id asc";
         private ObservableCollection<Bowler> bowlers = new ObservableCollection<Bowler>();
         public ObservableCollection<Bowler> Bowlers { get { return this.bowlers; } }
 

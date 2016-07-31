@@ -25,7 +25,9 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="55"/>
         </Grid.RowDefinitions>
-        <TextBlock x:ConnectionId='3' x:Name="AppTitle" TextWrapping="Wrap" FontStyle="Italic" FontStretch="Normal" IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" ManipulationMode="None" FontSize="29.333" TextAlignment="Center" RenderTransformOrigin="0.484,-0.49" d:LayoutOverrides="LeftMargin, RightMargin, LeftPosition, RightPosition" Margin="0,10,0,25" Foreground="Black">
+        <TextBlock x:ConnectionId='3' x:Name="AppTitle" TextWrapping="Wrap" FontStyle="Italic" FontStretch="Normal" IsDoubleTapEnabled="False" IsHoldingEnabled="False"
+                   IsRightTapEnabled="False" IsTapEnabled="False" ManipulationMode="None" FontSize="29.333" TextAlignment="Center"
+                   RenderTransformOrigin="0.484,-0.49" d:LayoutOverrides="LeftMargin, RightMargin, LeftPosition, RightPosition" Margin="0,10,0,25" Foreground="Black">
         	<Run Text="Bowling Average "/>
         	<Run Text="Tracker"/>
         </TextBlock>
@@ -38,7 +40,10 @@
                         <TextBlock x:ConnectionId='7'                             FontSize="13.333"/>
                         <FlyoutBase.AttachedFlyout>
                             <Flyout>
-                                <TextBlock x:ConnectionId='8' TextWrapping="Wrap" Text="Delete Bowler"                         />
+                                <StackPanel>
+                                    <TextBlock x:ConnectionId='8' TextWrapping="Wrap" Margin="0,0,0,17" FontSize="22" Text="Delete Bowler"                         />
+                                    <TextBlock x:ConnectionId='9' TextWrapping="Wrap" Margin="0,17,0,0" FontSize="22" Text="Edit Name"                        />
+                                </StackPanel>
                             </Flyout>
                         </FlyoutBase.AttachedFlyout>
                     </StackPanel>
@@ -50,7 +55,6 @@
                 </Core:EventTriggerBehavior>
             </Interactivity:Interaction.Behaviors>
         </ListView>
-
     </Grid>
 </Page>
 

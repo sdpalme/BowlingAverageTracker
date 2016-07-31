@@ -1,11 +1,9 @@
-﻿using System;
+﻿using SQLite.Net;
+using SQLite.Net.Attributes;
+using SQLiteNetExtensions.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SQLiteNetExtensions.Attributes;
-using SQLite.Net.Attributes;
-using SQLite.Net;
 
 namespace BowlingAverageTracker.Dto
 {
@@ -15,7 +13,7 @@ namespace BowlingAverageTracker.Dto
         public static string deleteByLeagueQuery = "delete from Series where LeagueId = ?";
         public static string deleteByBowlerQuery = "delete from Series where LeagueId in " +
                                                    "(select Id from League where BowlerId = ?)";
-        private static string averageQuery = "select avg(Score) as Value from Game where SeriesId = ?";
+        private static string averageQuery = "select round(avg(Score), 2) as Value from Game where SeriesId = ?";
         private static string sumQuery = "select sum(Score) as Value from Game where SeriesId = ?";
 
         [PrimaryKey, AutoIncrement]
@@ -61,11 +59,6 @@ namespace BowlingAverageTracker.Dto
         public string DateString
         {
             get { return Date.ToString("D"); } 
-        }
-
-        public string AverageString
-        {
-            get { return String.Format("{0:0.00}", Average); }
         }
     }
 }
