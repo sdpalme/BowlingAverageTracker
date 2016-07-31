@@ -187,7 +187,6 @@ C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\Bowling
 C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\bin\x86\Release\System.Xml.XDocument.dll
 C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\bin\x86\Release\System.Xml.XmlDocument.dll
 C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\bin\x86\Release\System.Xml.XmlSerializer.dll
-C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\obj\x86\Release\BowlingAverageTracker.csprojResolveAssemblyReference.cache
 C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\obj\x86\Release\SelectSeriesPage.g.i.cs
 C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\obj\x86\Release\SelectSeriesPage.g.cs
 C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\obj\x86\Release\SelectSeriesPage.xaml
