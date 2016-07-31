@@ -12,11 +12,10 @@
     DataContext="{Binding Path=SelectLeaguePage, Source={StaticResource ViewModelLocator}}">
 
     <Page.BottomAppBar>
-        <CommandBar Height="52" Margin="1,0" VerticalAlignment="Stretch">
-            <CommandBar.Content>
-                <Grid/>
-            </CommandBar.Content>
-            <AppBarButton x:Name="NewLeague" Icon="Add" Label="New League" Click="AddLeague"/>
+        <CommandBar ClosedDisplayMode="Compact">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton x:Name="NewLeague" Icon="Add" Label="New League" Click="AddLeague"/>
+            </CommandBar.PrimaryCommands>
         </CommandBar>
     </Page.BottomAppBar>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -28,19 +27,25 @@
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="Select League" x:Name="SelectLeague" TextWrapping="Wrap" FontStyle="Italic" FontStretch="Normal" IsDoubleTapEnabled="False"
                    IsHoldingEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" ManipulationMode="None" FontSize="29.333" TextAlignment="Center"
-                   RenderTransformOrigin="0.484,-0.49" d:LayoutOverrides="LeftMargin, RightMargin, LeftPosition, RightPosition" Margin="0,10,0,25" Foreground="Black"/>
-        <TextBlock Grid.Row="1" x:Name="BowlerName" TextWrapping="Wrap" Text="{Binding ViewModel.Bowler.Name}" FontFamily="Arial Black" Margin="10,0" FontSize="18"/>
+                   RenderTransformOrigin="0.484,-0.49" d:LayoutOverrides="LeftMargin, RightMargin, LeftPosition, RightPosition" Margin="0,10,0,25" Foreground="Black" Height="42"/>
+        <TextBlock Grid.Row="1" x:Name="BowlerName" TextWrapping="Wrap" Text="{x:Bind ViewModel.Bowler.Name}" FontFamily="Arial Black" Margin="10,0" FontSize="18"/>
         <ListView Grid.Row="2" x:Name="LeagueList" IsItemClickEnabled="True" ItemsSource="{x:Bind ViewModel.Leagues}" Margin="10,10,10,10" FontSize="24"
                   IsDoubleTapEnabled="False" IsRightTapEnabled="False">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="localDto:League">
-                    <StackPanel IsRightTapEnabled="True" RightTapped="League_RightTapped">
+                    <StackPanel IsRightTapEnabled="True" Holding="League_Holding" RightTapped="League_RightTapped">
                         <TextBlock Text="{x:Bind Name}" FontSize="24"/>
-                        <TextBlock FontSize="13.333">
+                        <TextBlock FontSize="13">
                             <Run Text="     League Average: "/>
                             <Run Text="{x:Bind Average}"/>
-                            <Run Text="   Number of Series: "/>
+                        </TextBlock>
+                        <TextBlock FontSize="13">
+                            <Run Text="     Number of Series: "/>
                             <Run x:Name="SeriesCount" Text="{x:Bind Series.Count}"/>
+                        </TextBlock>
+                        <TextBlock FontSize="13">
+                            <Run Text="     Number of Games: "/>
+                            <Run x:Name="GameCount" Text="{x:Bind GameCount}"/>
                         </TextBlock>
                         <FlyoutBase.AttachedFlyout>
                             <Flyout>

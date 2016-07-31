@@ -16,25 +16,25 @@
     <PackageRegistrationPath>
     </PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
-    <RegisteredManifestChecksum>5159641BBBF64FF077839D3E95C5254852D15CFA85AF8AF0970848E95C7CCD95</RegisteredManifestChecksum>
-    <RegisteredPackageMoniker>7bcd6e63-e403-42b9-89fc-05c343fe4bc7_1.0.0.0_x86__cnj9vj70ehdf8</RegisteredPackageMoniker>
-    <RegisteredUserModeAppID>7bcd6e63-e403-42b9-89fc-05c343fe4bc7_cnj9vj70ehdf8!App</RegisteredUserModeAppID>
-    <RegisteredPackageID>7bcd6e63-e403-42b9-89fc-05c343fe4bc7</RegisteredPackageID>
+    <RegisteredManifestChecksum>755F9090B5A65F8ED69F7A32F0E31148B956DF04B657A53E4D31FDD68439124D</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>BowlingAverageTracker_1.0.1.0_x86__cnj9vj70ehdf8</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>BowlingAverageTracker_cnj9vj70ehdf8!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>BowlingAverageTracker</RegisteredPackageID>
     <RegisteredPackagePublisher>CN=Sam</RegisteredPackagePublisher>
-    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+    <RegisteredVersion>1.0.1.0</RegisteredVersion>
     <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
   </PropertyGroup>
   <ItemGroup>
     <AppXManifest Include="C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-07-30T22:48:02.927</Modified>
+      <Modified>2016-07-31T03:35:17.643</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\bin\x86\Debug\BowlingAverageTracker.exe">
       <PackagePath>entrypoint\BowlingAverageTracker.exe</PackagePath>
-      <Modified>2016-07-30T22:48:01.248</Modified>
+      <Modified>2016-07-31T02:47:42.844</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\BehaviorsXamlSDKManaged\12.0\References\CommonConfiguration\Neutral\Microsoft.Xaml.Interactions.dll">
       <PackagePath>Microsoft.Xaml.Interactions.dll</PackagePath>
@@ -500,6 +500,31 @@
       <PackagePath>ucrtbased.dll</PackagePath>
       <Modified>2016-03-29T15:11:30.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\Assets\BadgeLogo.scale-100.jpg">
+      <PackagePath>Assets\BadgeLogo.scale-100.jpg</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-07-31T02:00:42.635</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\Assets\BadgeLogo.scale-125.jpg">
+      <PackagePath>Assets\BadgeLogo.scale-125.jpg</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-07-31T02:00:08.325</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\Assets\BadgeLogo.scale-150.jpg">
+      <PackagePath>Assets\BadgeLogo.scale-150.jpg</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-07-31T01:59:46.380</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\Assets\BadgeLogo.scale-200.jpg">
+      <PackagePath>Assets\BadgeLogo.scale-200.jpg</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-07-31T01:59:25.159</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\Assets\BadgeLogo.scale-400.jpg">
+      <PackagePath>Assets\BadgeLogo.scale-400.jpg</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-07-31T01:58:39.117</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\Assets\Square150x150Logo.scale-100.jpg">
       <PackagePath>Assets\Square150x150Logo.scale-100.jpg</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
@@ -524,6 +549,11 @@
       <PackagePath>Assets\Square150x150Logo.scale-400.jpg</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2016-07-16T05:38:32.025</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\Assets\Square310x310Logo.scale-100.jpg">
+      <PackagePath>Assets\Square310x310Logo.scale-100.jpg</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-07-31T01:05:35.154</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\Assets\Square71x71Logo.scale-100.jpg">
       <PackagePath>Assets\Square71x71Logo.scale-100.jpg</PackagePath>
@@ -569,7 +599,7 @@
     <AppxPackagedFile Include="C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-09-20T23:20:42.000</Modified>
+      <Modified>2016-07-31T02:27:02.848</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
@@ -578,26 +608,26 @@
     <AppxPackagedFile Include="C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-09-20T23:20:42.000</Modified>
+      <Modified>2016-07-31T03:33:00.130</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-09-20T23:20:42.000</Modified>
+      <Modified>2016-07-31T03:33:40.509</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-09-20T23:20:42.000</Modified>
+      <Modified>2016-07-31T03:34:56.354</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-09-20T23:20:42.000</Modified>
+      <Modified>2016-07-31T01:24:48.292</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\bin\x86\Debug\BowlingAverageTracker.xr.xml">
       <PackagePath>BowlingAverageTracker.xr.xml</PackagePath>
-      <Modified>2016-07-30T22:48:00.917</Modified>
+      <Modified>2016-07-30T23:07:22.942</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -605,11 +635,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2016-07-30T22:48:02.427</Modified>
+      <Modified>2016-07-31T03:22:58.746</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\bin\x86\Debug\Core\BowlingAverageTracker.exe">
       <PackagePath>BowlingAverageTracker.exe</PackagePath>
-      <Modified>2016-07-30T22:48:02.923</Modified>
+      <Modified>2016-07-31T03:35:17.639</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

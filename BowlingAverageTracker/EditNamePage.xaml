@@ -11,14 +11,15 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="75"/>
+            <RowDefinition Height="175"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="55"/>
+            <RowDefinition Height="65"/>
         </Grid.RowDefinitions>
         <TextBlock x:Name="Title" Margin="43,10,42,10" Grid.Row="0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Center" HorizontalAlignment="Center"
-                   FontSize="29.333" FontStyle="Italic"/>
-        <TextBox Grid.Row="1" x:Name="NameBox" Height="46" Margin="20,20,20,260" TextWrapping="Wrap" Text="{x:Bind ViewModel.Dto.Name}" VerticalAlignment="Center"
+                   FontSize="29.333" FontStyle="Italic" Height="42"/>
+        <TextBox Grid.Row="1" x:Name="NameBox" Height="46" Margin="0,0,0,0" TextWrapping="Wrap" Text="{x:Bind ViewModel.Dto.Name}" VerticalAlignment="Center"
                  HorizontalAlignment="Center" Width="275" InputScope="Text" FontSize="24"/>
-        <Button Grid.Row="1" x:Name="SaveBtn" Content="Save" HorizontalAlignment="Center" Margin="85,206,84,250" VerticalAlignment="Center" Width="130" Height="40"
+        <Button Grid.Row="2" x:Name="SaveBtn" Content="Save" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" Width="150" Height="50"
                 Click="SaveBtn_Click"/>
     </Grid>
 </Page>

@@ -6,3 +6,4 @@
 "C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\obj\x86\Release\split.scale-400.pri"			"resources.pri"
 "C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\obj\x86\Release\PackageLayout\Assets\Square71x71Logo.scale-400.jpg"			"Assets\Square71x71Logo.scale-400.jpg"
 "C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\obj\x86\Release\PackageLayout\Assets\Square150x150Logo.scale-400.jpg"			"Assets\Square150x150Logo.scale-400.jpg"
+"C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\obj\x86\Release\PackageLayout\Assets\BadgeLogo.scale-400.jpg"			"Assets\BadgeLogo.scale-400.jpg"

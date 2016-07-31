@@ -1,0 +1,11 @@
+﻿[ResourceMetadata]
+"ResourceId"			"split.scale-100"
+"ResourceDimensions"		"scale-100"
+
+[Files]
+"C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\obj\x86\Debug\split.scale-100.pri"			"resources.pri"
+"C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\obj\x86\Debug\PackageLayout\Assets\StrikeLogo.scale-100.jpg"			"Assets\StrikeLogo.scale-100.jpg"
+"C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\obj\x86\Debug\PackageLayout\Assets\Square71x71Logo.scale-100.jpg"			"Assets\Square71x71Logo.scale-100.jpg"
+"C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\obj\x86\Debug\PackageLayout\Assets\Square310x310Logo.scale-100.jpg"			"Assets\Square310x310Logo.scale-100.jpg"
+"C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\obj\x86\Debug\PackageLayout\Assets\Square150x150Logo.scale-100.jpg"			"Assets\Square150x150Logo.scale-100.jpg"
+"C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\obj\x86\Debug\PackageLayout\Assets\BadgeLogo.scale-100.jpg"			"Assets\BadgeLogo.scale-100.jpg"

@@ -33,6 +33,11 @@ namespace BowlingAverageTracker
             ViewModel.Navigate<EditNameViewModel>(league);
         }
 
+        private void League_Holding(object sender, HoldingRoutedEventArgs e)
+        {
+            FlyoutBase.ShowAttachedFlyout((FrameworkElement)sender);
+        }
+
         private void League_RightTapped(object sender, RightTappedRoutedEventArgs e)
         {
             FlyoutBase.ShowAttachedFlyout((FrameworkElement)sender);

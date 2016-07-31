@@ -12,49 +12,75 @@
     DataContext="{Binding Path=EnterScoresPage, Source={StaticResource ViewModelLocator}}">
 
     <Page.BottomAppBar>
-        <CommandBar Height="52" Margin="1,0" VerticalAlignment="Stretch">
-            <CommandBar.Content>
-                <Grid/>
-            </CommandBar.Content>
-            <AppBarButton x:Name="AddGameBtn" Icon="Add" Label="Add Game" Click="AddGame"/>
+        <CommandBar ClosedDisplayMode="Compact">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton x:Name="AddGameBtn" Icon="Add" Label="Add Game" Click="AddGame"/>
+            </CommandBar.PrimaryCommands>
         </CommandBar>
     </Page.BottomAppBar>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="75"/>
-            <RowDefinition Height="25"/>
-            <RowDefinition Height="15"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="10"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="15"/>
+            <RowDefinition Height="10"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="45"/>
             <RowDefinition Height="55"/>
+            <RowDefinition Height="45"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="Enter Scores" x:Name="SelectSeries" TextWrapping="Wrap" FontStyle="Italic" FontStretch="Normal"
                    IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" ManipulationMode="None"
                    FontSize="29.333" TextAlignment="Center" RenderTransformOrigin="0.484,-0.49"
-                   d:LayoutOverrides="LeftMargin, RightMargin, LeftPosition, RightPosition" Margin="0,10,0,25" Foreground="Black"/>
+                   d:LayoutOverrides="LeftMargin, RightMargin, LeftPosition, RightPosition" Margin="0,10,0,25" Foreground="Black" Height="42"/>
         <TextBlock Grid.Row="1" x:Name="LeagueName" TextWrapping="Wrap" FontFamily="Arial Black" Margin="10,0" FontSize="18">
            <Run Text="{x:Bind ViewModel.Series.League.Bowler.Name}"/>
            <Run Text=" - "/>
            <Run Text="{x:Bind ViewModel.Series.League.Name}"/>
         </TextBlock>
-        <DatePicker Grid.Row="3" x:Name="SeriesDate" Date="{Binding ViewModel.Series.Date.Date}" HorizontalAlignment="Center" Margin="37,0,27,0"
-                    VerticalAlignment="Top" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" DateChanged="SeriesDateChanged" FontSize="24"/>
+        <DatePicker Grid.Row="3" x:Name="SeriesDate" Date="{Binding ViewModel.Series.Date.Date}" HorizontalAlignment="Center" Margin="0,0,0,0"
+                    VerticalAlignment="Top" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" DateChanged="SeriesDateChanged" FontSize="20"/>
         <ListView Grid.Row="5" x:Name="GameList" IsItemClickEnabled="False" IsHoldingEnabled="False" ItemsSource="{x:Bind ViewModel.Games}" Margin="10,10,10,10"
-                  FontSize="24" IsDoubleTapEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" IsMultiSelectCheckBoxEnabled="False">
+                  FontSize="24" IsDoubleTapEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" IsMultiSelectCheckBoxEnabled="False"
+                  SelectionMode="None">
+            <ListView.Resources>
+                <Style x:Key="ListViewItemStyle1" TargetType="ListViewItem">
+                    <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+                    <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseHighBrush}"/>
+                    <Setter Property="TabNavigation" Value="Local"/>
+                    <Setter Property="IsHoldingEnabled" Value="True"/>
+                    <Setter Property="Padding" Value="12,0,12,0"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                    <Setter Property="MinWidth" Value="{ThemeResource ListViewItemMinWidth}"/>
+                    <Setter Property="MinHeight" Value="{ThemeResource ListViewItemMinHeight}"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListViewItem">
+                                <ContentPresenter/>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListView.Resources>
+            <ListView.ItemContainerStyle>
+                <StaticResource ResourceKey="ListViewItemStyle1"/>
+            </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="localDto:Game">
-                    <StackPanel Orientation="Horizontal" IsRightTapEnabled="True" RightTapped="Game_RightTapped">
-                        <TextBlock FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" IsRightTapEnabled="True" Holding="Game_Holding" RightTapped="Game_RightTapped" IsDoubleTapEnabled="False"
+                                 IsTapEnabled="False">
+                        <TextBlock FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Run Text="Game "/>
                             <Run Text="{x:Bind Id, Converter={StaticResource GameRowNumberConverter}}"/>
                         </TextBlock>
-                        <TextBox Grid.Row="2" x:Name="Score" InputScope="Number" Height="35" Margin="15,17,0,17" TextWrapping="Wrap" Text="{x:Bind Score}"
-                                 VerticalAlignment="Center" HorizontalAlignment="Center" Width="100" FontSize="20" TextChanged="ScoreChanged"/>
+                        <TextBox Grid.Row="2" x:Name="Score" InputScope="Number" Height="35" Margin="15,15,0,15" TextWrapping="Wrap" Text="{x:Bind Score}"
+                                 VerticalAlignment="Center" HorizontalAlignment="Center" Width="100" FontSize="18" TextChanged="ScoreChanged"/>
                         <FlyoutBase.AttachedFlyout>
                             <Flyout>
-                                <TextBlock TextWrapping="Wrap" FontSize="22" Text="Delete Game" Tapped="Game_Deleted" />
+                                <TextBlock TextWrapping="Wrap" FontSize="20" Text="Delete Game" Tapped="Game_Deleted" />
                             </Flyout>
                         </FlyoutBase.AttachedFlyout>
                     </StackPanel>
@@ -62,11 +88,11 @@
             </ListView.ItemTemplate>
         </ListView>
         <StackPanel Grid.Row="6" Orientation="Vertical">
-            <TextBlock TextWrapping="Wrap" FontFamily="Arial Black" Margin="10,0" FontSize="18.667">
+            <TextBlock TextWrapping="Wrap" FontFamily="Arial Black" Margin="10,0" FontSize="18.667" Height="25">
                <Run Text="Total Pins: "/>
                <Run x:Name="SeriesTotalPins" Text="{x:Bind ViewModel.Series.TotalPins}"/>
             </TextBlock>
-            <TextBlock TextWrapping="Wrap" FontFamily="Arial Black" Margin="10,0" FontSize="18.667">
+            <TextBlock TextWrapping="Wrap" FontFamily="Arial Black" Margin="10,0" FontSize="18.667" Height="25">
                <Run Text="Series Average: "/>
                <Run x:Name="SeriesAverageText" Text="{x:Bind ViewModel.Series.Average}"/>
             </TextBlock>

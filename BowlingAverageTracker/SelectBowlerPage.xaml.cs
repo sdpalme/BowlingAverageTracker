@@ -38,6 +38,11 @@ namespace BowlingAverageTracker
             ViewModel.Navigate<EditNameViewModel>(bowler);
         }
 
+        private void Bowler_Holding(object sender, HoldingRoutedEventArgs e)
+        {
+            FlyoutBase.ShowAttachedFlyout((FrameworkElement)sender);
+        }
+
         private void Bowler_RightTapped(object sender, RightTappedRoutedEventArgs e)
         {
             FlyoutBase.ShowAttachedFlyout((FrameworkElement)sender);

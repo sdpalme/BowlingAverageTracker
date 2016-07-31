@@ -10,13 +10,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     DataContext="{Binding Path=SelectSeriesPage, Source={StaticResource ViewModelLocator}}">
-
     <Page.BottomAppBar>
-        <CommandBar Height="52" Margin="1,0" VerticalAlignment="Stretch">
-            <CommandBar.Content>
-                <Grid/>
-            </CommandBar.Content>
-            <AppBarButton x:Name="NewSeries" Icon="Add" Label="New Series" Click="AddSeries"/>
+        <CommandBar ClosedDisplayMode="Compact">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton x:Name="NewSeries" Icon="Add" Label="New Series" Click="AddSeries"/>
+            </CommandBar.PrimaryCommands>
         </CommandBar>
     </Page.BottomAppBar>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -28,7 +26,7 @@
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="Select Series" x:Name="SelectSeries" TextWrapping="Wrap" FontStyle="Italic" FontStretch="Normal" IsDoubleTapEnabled="False"
                    IsHoldingEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" ManipulationMode="None" FontSize="29.333" TextAlignment="Center"
-                   RenderTransformOrigin="0.484,-0.49" d:LayoutOverrides="LeftMargin, RightMargin, LeftPosition, RightPosition" Margin="0,10,0,25" Foreground="Black"/>
+                   RenderTransformOrigin="0.484,-0.49" d:LayoutOverrides="LeftMargin, RightMargin, LeftPosition, RightPosition" Margin="0,10,0,25" Foreground="Black" Height="42"/>
         <TextBlock Grid.Row="1" x:Name="BowlerLeagueName" TextWrapping="Wrap" FontFamily="Arial Black" Margin="10,0" FontSize="18">
             <Run Text="{x:Bind ViewModel.League.Bowler.Name}"/>
             <Run Text=" - "/>
@@ -38,9 +36,9 @@
                   FontSize="24" IsDoubleTapEnabled="False" IsRightTapEnabled="False">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="localDto:Series">
-                    <StackPanel IsRightTapEnabled="True" RightTapped="Series_RightTapped">
+                    <StackPanel IsRightTapEnabled="True" Holding="Series_Holding" RightTapped="Series_RightTapped">
                         <TextBlock Text="{x:Bind DateString}" FontSize="24"/>
-                        <TextBlock FontSize="13.333">
+                        <TextBlock FontSize="13">
                             <Run Text="   Average: "/>
                             <Run Text="{x:Bind Average}"/>
                         </TextBlock>

@@ -7,7 +7,7 @@
 
     For more information on package manifest files, see http://go.microsoft.com/fwlink/?LinkID=241727
   -->
-  <Identity Name="BowlingAverageTracker" Publisher="CN=Sam" Version="1.0.0.0" ProcessorArchitecture="x86" />
+  <Identity Name="BowlingAverageTracker" Publisher="CN=Sam" Version="1.0.32.0" ProcessorArchitecture="x86" />
   <mp:PhoneIdentity PhoneProductId="7bcd6e63-e403-42b9-89fc-05c343fe4bc7" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Bowling Average Tracker</DisplayName>
@@ -26,16 +26,17 @@
   <Applications>
     <Application Id="App" Executable="BowlingAverageTracker.exe" EntryPoint="BowlingAverageTracker.App">
       <uap:VisualElements DisplayName="Bowling Average Tracker" Square150x150Logo="Assets\Square150x150Logo.jpg" Square44x44Logo="Assets\Square44x44Logo.png" Description="Tracks Bowling Averages." BackgroundColor="transparent">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square71x71Logo="Assets\Square71x71Logo.jpg" ShortName="Bowling Average Tracker" Square310x310Logo="Assets\Square310x310Logo.jpg">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.jpg" Square71x71Logo="Assets\Square71x71Logo.jpg" ShortName="Bowling Average Tracker" Square310x310Logo="Assets\Square310x310Logo.png">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo" />
             <uap:ShowOn Tile="wide310x150Logo" />
             <uap:ShowOn Tile="square310x310Logo" />
           </uap:ShowNameOnTiles>
         </uap:DefaultTile>
-        <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        <uap:SplashScreen Image="Assets\SplashScreen.jpg" />
         <uap:InitialRotationPreference>
-          <uap:Rotation Preference="landscape" />
+          <uap:Rotation Preference="portrait" />
+          <uap:Rotation Preference="portraitFlipped" />
         </uap:InitialRotationPreference>
       </uap:VisualElements>
     </Application>

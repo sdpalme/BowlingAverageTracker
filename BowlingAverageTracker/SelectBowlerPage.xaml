@@ -12,11 +12,10 @@
     DataContext="{Binding Path=SelectBowlerPage, Source={StaticResource ViewModelLocator}}">
 
     <Page.BottomAppBar>
-        <CommandBar Height="52" Margin="1,0" VerticalAlignment="Stretch">
-            <CommandBar.Content>
-                <Grid/>
-            </CommandBar.Content>
-            <AppBarButton x:Name="NewBowler" Icon="Add" Label="New Bowler" Click="AddBowler"/>
+        <CommandBar ClosedDisplayMode="Compact">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton x:Name="NewBowler" Icon="Add" Label="New Bowler" Click="AddBowler"/>
+            </CommandBar.PrimaryCommands>
         </CommandBar>
     </Page.BottomAppBar>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -27,7 +26,7 @@
         </Grid.RowDefinitions>
         <TextBlock x:Name="AppTitle" TextWrapping="Wrap" FontStyle="Italic" FontStretch="Normal" IsDoubleTapEnabled="False" IsHoldingEnabled="False"
                    IsRightTapEnabled="False" IsTapEnabled="False" ManipulationMode="None" FontSize="29.333" TextAlignment="Center"
-                   RenderTransformOrigin="0.484,-0.49" d:LayoutOverrides="LeftMargin, RightMargin, LeftPosition, RightPosition" Margin="0,10,0,25" Foreground="Black">
+                   RenderTransformOrigin="0.484,-0.49" d:LayoutOverrides="LeftMargin, RightMargin, LeftPosition, RightPosition" Margin="0,10,0,25" Foreground="Black" Height="42">
         	<Run Text="Bowling Average "/>
         	<Run Text="Tracker"/>
         </TextBlock>
@@ -35,9 +34,9 @@
                   IsDoubleTapEnabled="False" IsRightTapEnabled="False">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="localDto:Bowler">
-                    <StackPanel IsRightTapEnabled="True" RightTapped="Bowler_RightTapped">
+                    <StackPanel IsRightTapEnabled="True" Holding="Bowler_Holding" RightTapped="Bowler_RightTapped">
                         <TextBlock Text="{x:Bind NameLine}" FontSize="24"/>
-                        <TextBlock Text="{x:Bind AverageLine}" FontSize="13.333"/>
+                        <TextBlock Text="{x:Bind AverageLine}" FontSize="13"/>
                         <FlyoutBase.AttachedFlyout>
                             <Flyout>
                                 <StackPanel>

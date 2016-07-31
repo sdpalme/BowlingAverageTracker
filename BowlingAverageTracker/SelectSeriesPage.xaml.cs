@@ -30,6 +30,11 @@ namespace BowlingAverageTracker
             ViewModel.Navigate<EnterScoresViewModel>(series);
         }
 
+        private void Series_Holding(object sender, HoldingRoutedEventArgs e)
+        {
+            FlyoutBase.ShowAttachedFlyout((FrameworkElement)sender);
+        }
+
         private void Series_RightTapped(object sender, RightTappedRoutedEventArgs e)
         {
             FlyoutBase.ShowAttachedFlyout((FrameworkElement)sender);

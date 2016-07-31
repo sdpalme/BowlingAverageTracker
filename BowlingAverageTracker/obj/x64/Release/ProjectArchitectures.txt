@@ -1,0 +1,1 @@
+C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\BowlingAverageTracker.csproj;x64

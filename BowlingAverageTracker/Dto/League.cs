@@ -13,6 +13,8 @@ namespace BowlingAverageTracker.Dto
         public static string deleteByBowlerQuery = "delete from League where BowlerId = ?";
         private static string averageQuery = "select round(avg(Score), 2) as Value from Game where SeriesId in " +
                                      "(select Id from Series where LeagueId = ?)";
+        private static string gameCountQuery = "select count(*) as Value from Game where SeriesId in " +
+                                     "(select Id from Series where LeagueId = ?)";
 
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
@@ -38,6 +40,17 @@ namespace BowlingAverageTracker.Dto
                 using (SQLiteConnection conn = getDBConnection())
                 {
                     return conn.Query<FloatWrapper>(averageQuery, Id).First().Value;
+                }
+            }
+        }
+
+        public int GameCount
+        {
+            get
+            {
+                using (SQLiteConnection conn = getDBConnection())
+                {
+                    return conn.Query<IntWrapper>(gameCountQuery, Id).First().Value;
                 }
             }
         }

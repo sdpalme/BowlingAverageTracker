@@ -13,8 +13,6 @@
     <RootPropertyPathName Name="SelectItemCommand" />
     <RootPropertyPathName Name="SelectSeriesPage" />
     <RootPropertyPathName Name="SelectLeaguePage" />
-    <RootPropertyPathName Name="Bowler" />
-    <RootPropertyPathName Name="Name" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
     <RootType FullName="Windows.UI.Xaml.Application">
@@ -35,7 +33,9 @@
       <RootProperty Name="Path" />
       <RootProperty Name="Source" />
     </RootType>
-    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
+    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension">
+      <RootProperty Name="ResourceKey" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Grid">
       <RootProperty Name="Background" />
       <RootProperty Name="RowDefinitions" />
@@ -55,6 +55,7 @@
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="FontSize" />
       <RootProperty Name="FontStyle" />
+      <RootProperty Name="Height" />
       <RootProperty Name="FontStretch" />
       <RootProperty Name="IsDoubleTapEnabled" />
       <RootProperty Name="IsHoldingEnabled" />
@@ -94,10 +95,7 @@
     </RootType>
     <RootType FullName="BowlingAverageTracker.EditNamePage" />
     <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
-      <RootProperty Name="Height" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Content" />
+      <RootProperty Name="ClosedDisplayMode" />
       <RootProperty Name="PrimaryCommands" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
@@ -123,17 +121,51 @@
       <RootProperty Name="IsRightTapEnabled" />
       <RootProperty Name="IsTapEnabled" />
       <RootProperty Name="IsMultiSelectCheckBoxEnabled" />
+      <RootProperty Name="SelectionMode" />
+      <RootProperty Name="Resources" />
+      <RootProperty Name="ItemContainerStyle" />
       <RootProperty Name="ItemTemplate" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
       <RootProperty Name="Orientation" />
       <RootProperty Name="Children" />
       <RootProperty Name="IsRightTapEnabled" />
+      <RootProperty Name="IsDoubleTapEnabled" />
+      <RootProperty Name="IsTapEnabled" />
+      <RootEvent Name="Holding" />
       <RootEvent Name="RightTapped" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Documents.Run">
       <RootProperty Name="Text" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ListViewItem" />
+    <RootType FullName="Windows.UI.Xaml.Controls.Control">
+      <RootProperty Name="FontFamily" />
+      <RootProperty Name="FontSize" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="Foreground" />
+      <RootProperty Name="TabNavigation" />
+      <RootProperty Name="Padding" />
+      <RootProperty Name="HorizontalContentAlignment" />
+      <RootProperty Name="VerticalContentAlignment" />
+      <RootProperty Name="Template" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.UIElement">
+      <RootProperty Name="IsHoldingEnabled" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.FrameworkElement">
+      <RootProperty Name="MinWidth" />
+      <RootProperty Name="MinHeight" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Setter">
+      <RootProperty Name="Property" />
+      <RootProperty Name="Value" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ControlTemplate">
+      <RootProperty Name="TargetType" />
+      <RootProperty Name="Template" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ContentPresenter" />
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
       <RootProperty Name="Template" />
     </RootType>

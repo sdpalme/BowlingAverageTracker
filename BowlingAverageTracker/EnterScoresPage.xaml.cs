@@ -42,6 +42,11 @@ namespace BowlingAverageTracker
             refreshStats();
         }
 
+        private void Game_Holding(object sender, HoldingRoutedEventArgs e)
+        {
+            FlyoutBase.ShowAttachedFlyout((FrameworkElement)sender);
+        }
+
         private void Game_RightTapped(object sender, RightTappedRoutedEventArgs e)
         {
             FlyoutBase.ShowAttachedFlyout((FrameworkElement)sender);
