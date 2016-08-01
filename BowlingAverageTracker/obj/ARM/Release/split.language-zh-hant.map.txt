@@ -1,6 +1,0 @@
-﻿[ResourceMetadata]
-"ResourceId"			"split.language-zh-hant"
-"ResourceDimensions"		"language-zh-tw"
-
-[Files]
-"C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\obj\ARM\Release\split.language-zh-hant.pri"			"resources.pri"

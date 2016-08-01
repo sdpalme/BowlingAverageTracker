@@ -1,6 +1,0 @@
-﻿[ResourceMetadata]
-"ResourceId"			"split.language-ja"
-"ResourceDimensions"		"language-ja-jp"
-
-[Files]
-"C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\obj\ARM\Release\split.language-ja.pri"			"resources.pri"
