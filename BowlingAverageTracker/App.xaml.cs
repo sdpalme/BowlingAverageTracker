@@ -62,8 +62,8 @@ namespace BowlingAverageTracker
 
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
+                setupBackButton(rootFrame);
             }
-            setupBackButton(rootFrame);
 
             if (e.PrelaunchActivated == false)
             {

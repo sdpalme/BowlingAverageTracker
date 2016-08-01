@@ -16,7 +16,7 @@
             <RowDefinition Height="65"/>
         </Grid.RowDefinitions>
         <TextBlock x:Name="Title" Margin="43,10,42,10" Grid.Row="0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Center" HorizontalAlignment="Center"
-                   FontSize="29.333" FontStyle="Italic" Height="42"/>
+                   FontSize="28.5" FontStyle="Italic" Height="65"/>
         <TextBox Grid.Row="1" x:Name="NameBox" Height="46" Margin="0,0,0,0" TextWrapping="Wrap" Text="{x:Bind ViewModel.Dto.Name}" VerticalAlignment="Center"
                  HorizontalAlignment="Center" Width="275" InputScope="Text" FontSize="24"/>
         <Button Grid.Row="2" x:Name="SaveBtn" Content="Save" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" Width="150" Height="50"

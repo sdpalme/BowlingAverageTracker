@@ -21,19 +21,19 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="75"/>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="25"/>
             <RowDefinition Height="10"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="10"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="55"/>
-            <RowDefinition Height="45"/>
+            <RowDefinition Height="38"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="Enter Scores" x:Name="SelectSeries" TextWrapping="Wrap" FontStyle="Italic" FontStretch="Normal"
                    IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" ManipulationMode="None"
-                   FontSize="29.333" TextAlignment="Center" RenderTransformOrigin="0.484,-0.49"
-                   d:LayoutOverrides="LeftMargin, RightMargin, LeftPosition, RightPosition" Margin="0,10,0,25" Foreground="Black" Height="42"/>
-        <TextBlock Grid.Row="1" x:Name="LeagueName" TextWrapping="Wrap" FontFamily="Arial Black" Margin="10,0" FontSize="18">
+                   FontSize="28.5" TextAlignment="Center" RenderTransformOrigin="0.484,-0.49"
+                   d:LayoutOverrides="LeftMargin, RightMargin, LeftPosition, RightPosition" Margin="0,10,0,25" Foreground="Black" Height="65"/>
+        <TextBlock Grid.Row="1" x:Name="LeagueName" TextWrapping="Wrap" FontFamily="Arial Black" Margin="10,0" FontSize="18" Height="25">
            <Run Text="{x:Bind ViewModel.Series.League.Bowler.Name}"/>
            <Run Text=" - "/>
            <Run Text="{x:Bind ViewModel.Series.League.Name}"/>
