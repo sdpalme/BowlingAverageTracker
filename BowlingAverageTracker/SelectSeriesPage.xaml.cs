@@ -22,7 +22,7 @@ namespace BowlingAverageTracker
         private void AddSeries(object sender, RoutedEventArgs e)
         {
             Series series = new Series();
-            series.Date = new DateTimeOffset(DateTime.Now);
+            series.Date = new DateTimeOffset(DateTime.Now.ToUniversalTime());
             series.League = ViewModel.League;
             series.LeagueId = series.League.Id;
             ViewModel.Series.Insert(0, series);

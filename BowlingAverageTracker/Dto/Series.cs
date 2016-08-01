@@ -56,9 +56,14 @@ namespace BowlingAverageTracker.Dto
             }
         }
 
+        public DateTimeOffset LocalDate
+        {
+            get { return Date.ToLocalTime(); }
+        }
+
         public string DateString
         {
-            get { return Date.ToString("D"); } 
+            get { return LocalDate.ToString("D"); }
         }
     }
 }

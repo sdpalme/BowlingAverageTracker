@@ -27,7 +27,7 @@ namespace BowlingAverageTracker
 
         private void SeriesDateChanged(object sender, DatePickerValueChangedEventArgs e)
         {
-            ViewModel.Series.Date = e.NewDate;
+            ViewModel.Series.Date = e.NewDate.ToUniversalTime();
             ViewModel.update(ViewModel.Series);
         }
 

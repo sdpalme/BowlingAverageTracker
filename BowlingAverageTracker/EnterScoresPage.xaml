@@ -38,7 +38,7 @@
            <Run Text=" - "/>
            <Run Text="{x:Bind ViewModel.Series.League.Name}"/>
         </TextBlock>
-        <DatePicker Grid.Row="3" x:Name="SeriesDate" Date="{Binding ViewModel.Series.Date.Date}" HorizontalAlignment="Center" Margin="0,0,0,0"
+        <DatePicker Grid.Row="3" x:Name="SeriesDate" Date="{x:Bind ViewModel.Series.LocalDate}" HorizontalAlignment="Center" Margin="0,0,0,0"
                     VerticalAlignment="Top" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" DateChanged="SeriesDateChanged" FontSize="20"/>
         <ListView Grid.Row="5" x:Name="GameList" IsItemClickEnabled="False" IsHoldingEnabled="False" ItemsSource="{x:Bind ViewModel.Games}" Margin="10,10,10,10"
                   FontSize="24" IsDoubleTapEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" IsMultiSelectCheckBoxEnabled="False"
