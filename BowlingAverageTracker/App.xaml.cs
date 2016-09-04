@@ -112,6 +112,7 @@ namespace BowlingAverageTracker
                 conn.CreateTable<League>();
                 conn.CreateTable<Series>();
                 conn.CreateTable<Game>();
+                //createTestData();
             }
         }
 
@@ -144,6 +145,75 @@ namespace BowlingAverageTracker
             {
                 e.Handled = true;
                 rootFrame.GoBack();
+            }
+        }
+
+        private void createTestData()
+        {
+            int bowlers = 3;
+            int leagues = 2;
+            int series = 40;
+            Random rnd = new Random();
+            using (SQLiteConnection conn = new SQLiteConnection(new SQLitePlatformWinRT(),
+    Path.Combine(ApplicationData.Current.LocalFolder.Path, "BowlingAverageTracker.sqlite")))
+            {
+                for (int i = 0; i < bowlers; ++i)
+                {
+                    Bowler b = new Bowler();
+                    b.Name = "Test" + i;
+                    conn.Insert(b);
+                    // 3 game series
+                    for (int j = 0; j < leagues; ++j)
+                    {
+                        League l = new League();
+                        l.BowlerId = b.Id;
+                        l.Bowler = b;
+                        l.Name = "League" + j;
+                        conn.Insert(l);
+                        for (int k = 0; k < series; ++k)
+                        {
+                            Series s = new Series();
+                            s.League = l;
+                            s.LeagueId = l.Id;
+                            s.Date = new DateTimeOffset(DateTime.UtcNow.AddDays(k));
+                            conn.Insert(s);
+                            for (int m = 0; m < 3; ++m)
+                            {
+                                Game g = new Game();
+                                g.Series = s;
+                                g.SeriesId = s.Id;
+                                g.Score = rnd.Next(90, 301);
+                                conn.Insert(g);
+                            }
+                        }
+                    }
+                    // 4 game series
+                    for (int j = leagues; j < leagues * 2; ++j)
+                    {
+                        League l = new League();
+                        l.BowlerId = b.Id;
+                        l.Bowler = b;
+                        l.Name = "League" + j;
+                        conn.Insert(l);
+                        for (int k = 0; k < series; ++k)
+                        {
+                            Series s = new Series();
+                            s.League = l;
+                            s.LeagueId = l.Id;
+                            s.Date = new DateTimeOffset(DateTime.UtcNow.AddDays(k));
+                            conn.Insert(s);
+                            for (int m = 0; m < 4; ++m)
+                            {
+                                Game g = new Game();
+                                g.Series = s;
+                                g.SeriesId = s.Id;
+                                g.Score = rnd.Next(90, 301);
+                                conn.Insert(g);
+                            }
+                        }
+                    }
+                }
+                conn.Commit();
             }
         }
     }

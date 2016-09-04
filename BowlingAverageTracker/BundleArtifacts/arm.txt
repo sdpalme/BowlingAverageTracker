@@ -1,6 +1,6 @@
-MainPackage=C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\bin\ARM\Release\BowlingAverageTracker_1.0.8.0_ARM.appx
-SymbolPackage=C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\AppPackages\BowlingAverageTracker_1.0.8.0_Test\BowlingAverageTracker_1.0.8.0_ARM.appxsym
-ResourcePack=C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\bin\ARM\Release\BowlingAverageTracker_1.0.8.0_scale-100.appx
-ResourcePack=C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\bin\ARM\Release\BowlingAverageTracker_1.0.8.0_scale-125.appx
-ResourcePack=C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\bin\ARM\Release\BowlingAverageTracker_1.0.8.0_scale-150.appx
-ResourcePack=C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\bin\ARM\Release\BowlingAverageTracker_1.0.8.0_scale-200.appx
+MainPackage=C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\bin\ARM\Release\BowlingAverageTracker_1.0.14.0_ARM.appx
+SymbolPackage=C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\AppPackages\BowlingAverageTracker_1.0.14.0_Test\BowlingAverageTracker_1.0.14.0_ARM.appxsym
+ResourcePack=C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\bin\ARM\Release\BowlingAverageTracker_1.0.14.0_scale-100.appx
+ResourcePack=C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\bin\ARM\Release\BowlingAverageTracker_1.0.14.0_scale-125.appx
+ResourcePack=C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\bin\ARM\Release\BowlingAverageTracker_1.0.14.0_scale-150.appx
+ResourcePack=C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\bin\ARM\Release\BowlingAverageTracker_1.0.14.0_scale-200.appx

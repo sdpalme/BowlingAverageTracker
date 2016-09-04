@@ -1,2 +1,2 @@
-MainPackage=C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\bin\x86\Release\BowlingAverageTracker_1.0.8.0_x86.appx
-SymbolPackage=C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\AppPackages\BowlingAverageTracker_1.0.8.0_Test\BowlingAverageTracker_1.0.8.0_x86.appxsym
+MainPackage=C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\bin\x86\Release\BowlingAverageTracker_1.0.14.0_x86.appx
+SymbolPackage=C:\Users\Sam\documents\visual studio 2015\Projects\BowlingAverageTracker\BowlingAverageTracker\AppPackages\BowlingAverageTracker_1.0.14.0_Test\BowlingAverageTracker_1.0.14.0_x86.appxsym

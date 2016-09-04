@@ -1,16 +1,15 @@
-﻿<Application
-    x:Class="BowlingAverageTracker.App"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:BowlingAverageTracker"
-    xmlns:vm="using:BowlingAverageTracker.ViewModel"
-    xmlns:dto="using:BowlingAverageTracker.Dto"
-    RequestedTheme="Light">
+﻿<Application x:Class="BowlingAverageTracker.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:dto="using:BowlingAverageTracker.Dto"
+             xmlns:local="using:BowlingAverageTracker"
+             xmlns:vm="using:BowlingAverageTracker.ViewModel"
+             RequestedTheme="Light">
     <Application.Resources>
         <ResourceDictionary>
             <vm:WindowsViewModelLocator x:Key="ViewModelLocator" />
             <dto:ItemClickEventArgsConverter x:Key="ItemClickEventArgsConverter" />
-            <vm:GameRowNumberConverter x:Key="GameRowNumberConverter"/>
+            <vm:GameRowNumberConverter x:Key="GameRowNumberConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

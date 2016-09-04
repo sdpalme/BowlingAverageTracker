@@ -1,6 +1,5 @@
 ﻿using BowlingAverageTracker.Dto;
 using BowlingAverageTracker.ViewModel;
-using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;

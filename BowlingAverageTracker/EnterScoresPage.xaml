@@ -1,86 +1,144 @@
-﻿<Page
-    x:Class="BowlingAverageTracker.EnterScoresPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
-    xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
-    xmlns:local="using:BowlingAverageTracker"
-    xmlns:localDto="using:BowlingAverageTracker.Dto"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    DataContext="{Binding Path=EnterScoresPage, Source={StaticResource ViewModelLocator}}">
+﻿<Page x:Class="BowlingAverageTracker.EnterScoresPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+      xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:BowlingAverageTracker"
+      xmlns:localDto="using:BowlingAverageTracker.Dto"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      DataContext="{Binding Path=EnterScoresPage,
+                            Source={StaticResource ViewModelLocator}}"
+      mc:Ignorable="d">
 
     <Page.BottomAppBar>
         <CommandBar ClosedDisplayMode="Compact">
             <CommandBar.PrimaryCommands>
-                <AppBarButton x:Name="AddGameBtn" Icon="Add" Label="Add Game" Click="AddGame"/>
+                <AppBarButton x:Name="AddGameBtn"
+                              Click="AddGame"
+                              Icon="Add"
+                              Label="Add Game" />
             </CommandBar.PrimaryCommands>
         </CommandBar>
     </Page.BottomAppBar>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="75"/>
-            <RowDefinition Height="25"/>
-            <RowDefinition Height="10"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="10"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="55"/>
-            <RowDefinition Height="38"/>
+            <RowDefinition Height="75" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="55" />
+            <RowDefinition Height="2" />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="Enter Scores" x:Name="SelectSeries" TextWrapping="Wrap" FontStyle="Italic" FontStretch="Normal"
-                   IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" ManipulationMode="None"
-                   FontSize="28.5" TextAlignment="Center" RenderTransformOrigin="0.484,-0.49"
-                   d:LayoutOverrides="LeftMargin, RightMargin, LeftPosition, RightPosition" Margin="0,10,0,25" Foreground="Black" Height="65"/>
-        <TextBlock Grid.Row="1" x:Name="LeagueName" TextWrapping="Wrap" FontFamily="Arial Black" Margin="10,0" FontSize="18" Height="25">
-           <Run Text="{x:Bind ViewModel.Series.League.Bowler.Name}"/>
-           <Run Text=" - "/>
-           <Run Text="{x:Bind ViewModel.Series.League.Name}"/>
+        <TextBlock x:Name="SelectSeries"
+                   Grid.Row="0"
+                   Height="65"
+                   Margin="0,10,0,25"
+                   FontSize="28.5"
+                   FontStretch="Normal"
+                   FontStyle="Italic"
+                   Foreground="Black"
+                   IsDoubleTapEnabled="False"
+                   IsHoldingEnabled="False"
+                   IsRightTapEnabled="False"
+                   IsTapEnabled="False"
+                   ManipulationMode="None"
+                   RenderTransformOrigin="0.484,-0.49"
+                   Text="Enter Scores"
+                   TextAlignment="Center"
+                   TextWrapping="Wrap"
+                   d:LayoutOverrides="LeftMargin, RightMargin, LeftPosition, RightPosition" />
+        <TextBlock x:Name="LeagueName"
+                   Grid.Row="1"
+                   Height="25"
+                   Margin="10,0"
+                   FontFamily="Arial Black"
+                   FontSize="18"
+                   TextWrapping="Wrap">
+            <Run Text="{x:Bind ViewModel.Series.League.Bowler.Name}" />
+            <Run Text=" - " />
+            <Run Text="{x:Bind ViewModel.Series.League.Name}" />
         </TextBlock>
-        <DatePicker Grid.Row="3" x:Name="SeriesDate" Date="{x:Bind ViewModel.Series.LocalDate}" HorizontalAlignment="Center" Margin="0,0,0,0"
-                    VerticalAlignment="Top" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" DateChanged="SeriesDateChanged" FontSize="20"/>
-        <ListView Grid.Row="5" x:Name="GameList" IsItemClickEnabled="False" IsHoldingEnabled="False" ItemsSource="{x:Bind ViewModel.Games}" Margin="10,10,10,10"
-                  FontSize="24" IsDoubleTapEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" IsMultiSelectCheckBoxEnabled="False"
+        <DatePicker x:Name="SeriesDate"
+                    Grid.Row="3"
+                    Margin="0,0,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Date="{x:Bind ViewModel.Series.LocalDate}"
+                    DateChanged="SeriesDateChanged"
+                    FontSize="20"
+                    d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" />
+        <ListView x:Name="GameList"
+                  Grid.Row="5"
+                  Margin="10,10,10,10"
+                  FontSize="24"
+                  IsDoubleTapEnabled="False"
+                  IsHoldingEnabled="False"
+                  IsItemClickEnabled="False"
+                  IsMultiSelectCheckBoxEnabled="False"
+                  IsRightTapEnabled="False"
+                  IsTapEnabled="False"
+                  ItemsSource="{x:Bind ViewModel.Games}"
                   SelectionMode="None">
             <ListView.Resources>
                 <Style x:Key="ListViewItemStyle1" TargetType="ListViewItem">
-                    <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
-                    <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
-                    <Setter Property="Background" Value="Transparent"/>
-                    <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseHighBrush}"/>
-                    <Setter Property="TabNavigation" Value="Local"/>
-                    <Setter Property="IsHoldingEnabled" Value="True"/>
-                    <Setter Property="Padding" Value="12,0,12,0"/>
-                    <Setter Property="HorizontalContentAlignment" Value="Left"/>
-                    <Setter Property="VerticalContentAlignment" Value="Center"/>
-                    <Setter Property="MinWidth" Value="{ThemeResource ListViewItemMinWidth}"/>
-                    <Setter Property="MinHeight" Value="{ThemeResource ListViewItemMinHeight}"/>
+                    <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}" />
+                    <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}" />
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseHighBrush}" />
+                    <Setter Property="TabNavigation" Value="Local" />
+                    <Setter Property="IsHoldingEnabled" Value="True" />
+                    <Setter Property="Padding" Value="12,0,12,0" />
+                    <Setter Property="HorizontalContentAlignment" Value="Left" />
+                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                    <Setter Property="MinWidth" Value="{ThemeResource ListViewItemMinWidth}" />
+                    <Setter Property="MinHeight" Value="{ThemeResource ListViewItemMinHeight}" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="ListViewItem">
-                                <ContentPresenter/>
+                                <ContentPresenter />
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
                 </Style>
             </ListView.Resources>
             <ListView.ItemContainerStyle>
-                <StaticResource ResourceKey="ListViewItemStyle1"/>
+                <StaticResource ResourceKey="ListViewItemStyle1" />
             </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="localDto:Game">
-                    <StackPanel Orientation="Horizontal" IsRightTapEnabled="True" Holding="Game_Holding" RightTapped="Game_RightTapped" IsDoubleTapEnabled="False"
-                                 IsTapEnabled="False">
-                        <TextBlock FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Run Text="Game "/>
-                            <Run Text="{x:Bind Id, Converter={StaticResource GameRowNumberConverter}}"/>
+                    <StackPanel Holding="Game_Holding"
+                                IsDoubleTapEnabled="False"
+                                IsRightTapEnabled="True"
+                                IsTapEnabled="False"
+                                Orientation="Horizontal"
+                                RightTapped="Game_RightTapped">
+                        <TextBlock HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="18">
+                            <Run Text="Game " />
+                            <Run Text="{x:Bind Id, Converter={StaticResource GameRowNumberConverter}}" />
                         </TextBlock>
-                        <TextBox Grid.Row="2" x:Name="Score" InputScope="Number" Height="35" Margin="15,15,0,15" TextWrapping="Wrap" Text="{x:Bind Score}"
-                                 VerticalAlignment="Center" HorizontalAlignment="Center" Width="100" FontSize="18" TextChanged="ScoreChanged"/>
+                        <TextBox x:Name="Score"
+                                 Grid.Row="2"
+                                 Width="100"
+                                 Height="35"
+                                 Margin="15,15,0,15"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Center"
+                                 FontSize="18"
+                                 InputScope="Number"
+                                 Text="{x:Bind Score}"
+                                 TextChanged="ScoreChanged"
+                                 TextWrapping="Wrap" />
                         <FlyoutBase.AttachedFlyout>
                             <Flyout>
-                                <TextBlock TextWrapping="Wrap" FontSize="20" Text="Delete Game" Tapped="Game_Deleted" />
+                                <TextBlock FontSize="20"
+                                           Tapped="Game_Deleted"
+                                           Text="Delete Game"
+                                           TextWrapping="Wrap" />
                             </Flyout>
                         </FlyoutBase.AttachedFlyout>
                     </StackPanel>
@@ -88,13 +146,21 @@
             </ListView.ItemTemplate>
         </ListView>
         <StackPanel Grid.Row="6" Orientation="Vertical">
-            <TextBlock TextWrapping="Wrap" FontFamily="Arial Black" Margin="10,0" FontSize="18.667" Height="25">
-               <Run Text="Total Pins: "/>
-               <Run x:Name="SeriesTotalPins" Text="{x:Bind ViewModel.Series.TotalPins}"/>
+            <TextBlock Height="25"
+                       Margin="10,0"
+                       FontFamily="Arial Black"
+                       FontSize="18.667"
+                       TextWrapping="Wrap">
+                <Run Text="Total Pins: " />
+                <Run x:Name="SeriesTotalPins" Text="{x:Bind ViewModel.Series.TotalPins}" />
             </TextBlock>
-            <TextBlock TextWrapping="Wrap" FontFamily="Arial Black" Margin="10,0" FontSize="18.667" Height="25">
-               <Run Text="Series Average: "/>
-               <Run x:Name="SeriesAverageText" Text="{x:Bind ViewModel.Series.Average}"/>
+            <TextBlock Height="25"
+                       Margin="10,0"
+                       FontFamily="Arial Black"
+                       FontSize="18.667"
+                       TextWrapping="Wrap">
+                <Run Text="Series Average: " />
+                <Run x:Name="SeriesAverageText" Text="{x:Bind ViewModel.Series.Average}" />
             </TextBlock>
         </StackPanel>
     </Grid>

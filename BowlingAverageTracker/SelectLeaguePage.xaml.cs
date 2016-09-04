@@ -58,6 +58,11 @@ namespace BowlingAverageTracker
             ViewModel.Navigate<EditNameViewModel>(league);
         }
 
+        private void StatsButton_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.Navigate<StatisticsViewModel>(ViewModel.Bowler);
+        }
+
         override
         protected void OnNavigatedTo(NavigationEventArgs e)
         {

@@ -38,6 +38,10 @@ namespace BowlingAverageTracker.ViewModel
         {
             get { return ServiceLocator.Current.GetInstance<EditNameViewModel>(); }
         }
+        public StatisticsViewModel StatisticsPage
+        {
+            get { return ServiceLocator.Current.GetInstance<StatisticsViewModel>(); }
+        }
     }
 
     public class WindowsViewModelLocator : BaseViewModelLocator
@@ -64,6 +68,7 @@ namespace BowlingAverageTracker.ViewModel
             service.Configure(typeof(SelectSeriesViewModel).FullName, typeof(SelectSeriesPage));
             service.Configure(typeof(EnterScoresViewModel).FullName, typeof(EnterScoresPage));
             service.Configure(typeof(EditNameViewModel).FullName, typeof(EditNamePage));
+            service.Configure(typeof(StatisticsViewModel).FullName, typeof(StatisticsPage));
 
             return service;
         }
