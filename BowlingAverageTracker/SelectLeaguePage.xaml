@@ -14,11 +14,22 @@
     <Page.BottomAppBar>
         <CommandBar ClosedDisplayMode="Compact">
             <CommandBar.PrimaryCommands>
+                <AppBarButton x:Name="HomeButton"
+                              Width="53"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Top"
+                              Click="HomeButton_Click"
+                              Icon="Home"
+                              Label="Home" />
+                <AppBarSeparator />
                 <AppBarButton x:Name="StatsButton"
+                              Width="53"
+                              HorizontalAlignment="Right"
                               Click="StatsButton_Click"
                               Icon="ShowResults"
                               Label="Statistics" />
                 <AppBarButton x:Name="NewLeague"
+                              Width="53"
                               Click="AddLeague"
                               Icon="Add"
                               Label="New League" />

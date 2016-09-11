@@ -19,6 +19,8 @@ namespace BowlingAverageTracker
     {
         public EnterScoresViewModel ViewModel { get; set; }
 
+        private bool isAddChange = false;
+
         public EnterScoresPage()
         {
             this.InitializeComponent();
@@ -40,6 +42,7 @@ namespace BowlingAverageTracker
             ViewModel.Games.Add(game);
             ViewModel.create(game);
             refreshStats();
+            isAddChange = true;
         }
 
         private void Game_Holding(object sender, HoldingRoutedEventArgs e)
@@ -59,6 +62,12 @@ namespace BowlingAverageTracker
             ViewModel.delete(game);
             ViewModel.Games.Remove(game);
             refreshStats();
+            SelectSeries.Focus(FocusState.Keyboard);
+        }
+
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.Navigate<SelectBowlerViewModel>();
         }
 
         private void refreshStats()
@@ -111,6 +120,36 @@ namespace BowlingAverageTracker
             if (score < 0)
                 return 0;
             return score;
+        }
+
+        private void Score_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox scoreTextBox = sender as TextBox;
+            if (scoreTextBox.Text.Equals("0"))
+            {
+                scoreTextBox.Text = "";
+            }
+        }
+
+        private void Score_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox scoreTextBox = sender as TextBox;
+            if (scoreTextBox.Text.Equals(""))
+            {
+                scoreTextBox.Text = "0";
+            }
+        }
+
+        private void GameList_ContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args)
+        {
+            if (isAddChange)
+            {
+                isAddChange = false;
+                ListViewItem item = args.ItemContainer as ListViewItem;
+                StackPanel stackPanel = item.ContentTemplateRoot as StackPanel;
+                TextBox scoreTextBox = stackPanel.Children[1] as TextBox;
+                scoreTextBox.Focus(FocusState.Keyboard);
+            }
         }
     }
 }

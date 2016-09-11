@@ -12,7 +12,7 @@
     <UseAuthentication0>True</UseAuthentication0>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <DeviceId>866B1FCC-00D0-49A0-B50F-25EE40E4509A</DeviceId>
+    <DeviceId>98CD6FA8-9114-4179-ACA3-38E5D23C77EE</DeviceId>
     <UseEmulator>false</UseEmulator>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
@@ -21,6 +21,10 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DeviceId>30F105C9-681E-420b-A277-7C086EAD8A4E</DeviceId>
+    <UseEmulator>true</UseEmulator>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DeviceId>413D78D7-DB5A-4A7B-BD1A-C5B90F0CF26A</DeviceId>
     <UseEmulator>true</UseEmulator>
   </PropertyGroup>
 </Project>

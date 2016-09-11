@@ -10,10 +10,20 @@
       DataContext="{Binding Path=SelectSeriesPage,
                             Source={StaticResource ViewModelLocator}}"
       mc:Ignorable="d">
+
     <Page.BottomAppBar>
         <CommandBar ClosedDisplayMode="Compact">
             <CommandBar.PrimaryCommands>
+                <AppBarButton x:Name="HomeButton"
+                              Width="53"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Top"
+                              Click="HomeButton_Click"
+                              Icon="Home"
+                              Label="Home" />
+                <AppBarSeparator />
                 <AppBarButton x:Name="NewSeries"
+                              Width="53"
                               Click="AddSeries"
                               Icon="Add"
                               Label="New Series" />
@@ -70,7 +80,7 @@
                     <StackPanel Holding="Series_Holding"
                                 IsRightTapEnabled="True"
                                 RightTapped="Series_RightTapped">
-                        <TextBlock FontSize="24" Text="{x:Bind DateString}" />
+                        <TextBlock FontSize="18" Text="{x:Bind DateString}" />
                         <TextBlock FontSize="13">
                             <Run Text="   Average: " />
                             <Run Text="{x:Bind Average}" />
@@ -91,6 +101,5 @@
                 </Core:EventTriggerBehavior>
             </Interactivity:Interaction.Behaviors>
         </ListView>
-
     </Grid>
 </Page>

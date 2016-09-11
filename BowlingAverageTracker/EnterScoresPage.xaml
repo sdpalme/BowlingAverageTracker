@@ -14,7 +14,16 @@
     <Page.BottomAppBar>
         <CommandBar ClosedDisplayMode="Compact">
             <CommandBar.PrimaryCommands>
+                <AppBarButton x:Name="HomeButton"
+                              Width="53"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Top"
+                              Click="HomeButton_Click"
+                              Icon="Home"
+                              Label="Home" />
+                <AppBarSeparator />
                 <AppBarButton x:Name="AddGameBtn"
+                              Width="53"
                               Click="AddGame"
                               Icon="Add"
                               Label="Add Game" />
@@ -30,7 +39,7 @@
             <RowDefinition Height="10" />
             <RowDefinition Height="*" />
             <RowDefinition Height="55" />
-            <RowDefinition Height="2" />
+            <RowDefinition Height="24" />
         </Grid.RowDefinitions>
         <TextBlock x:Name="SelectSeries"
                    Grid.Row="0"
@@ -73,6 +82,7 @@
         <ListView x:Name="GameList"
                   Grid.Row="5"
                   Margin="10,10,10,10"
+                  ContainerContentChanging="GameList_ContainerContentChanging"
                   FontSize="24"
                   IsDoubleTapEnabled="False"
                   IsHoldingEnabled="False"
@@ -90,7 +100,7 @@
                     <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseHighBrush}" />
                     <Setter Property="TabNavigation" Value="Local" />
                     <Setter Property="IsHoldingEnabled" Value="True" />
-                    <Setter Property="Padding" Value="12,0,12,0" />
+                    <Setter Property="Padding" Value="10,0,10,0" />
                     <Setter Property="HorizontalContentAlignment" Value="Left" />
                     <Setter Property="VerticalContentAlignment" Value="Center" />
                     <Setter Property="MinWidth" Value="{ThemeResource ListViewItemMinWidth}" />
@@ -124,12 +134,14 @@
                         <TextBox x:Name="Score"
                                  Grid.Row="2"
                                  Width="100"
-                                 Height="35"
+                                 Height="39"
                                  Margin="15,15,0,15"
                                  HorizontalAlignment="Center"
                                  VerticalAlignment="Center"
                                  FontSize="18"
+                                 GotFocus="Score_GotFocus"
                                  InputScope="Number"
+                                 LostFocus="Score_LostFocus"
                                  Text="{x:Bind Score}"
                                  TextChanged="ScoreChanged"
                                  TextWrapping="Wrap" />
@@ -146,16 +158,14 @@
             </ListView.ItemTemplate>
         </ListView>
         <StackPanel Grid.Row="6" Orientation="Vertical">
-            <TextBlock Height="25"
-                       Margin="10,0"
+            <TextBlock Margin="10,0"
                        FontFamily="Arial Black"
                        FontSize="18.667"
                        TextWrapping="Wrap">
                 <Run Text="Total Pins: " />
                 <Run x:Name="SeriesTotalPins" Text="{x:Bind ViewModel.Series.TotalPins}" />
             </TextBlock>
-            <TextBlock Height="25"
-                       Margin="10,0"
+            <TextBlock Margin="10,0"
                        FontFamily="Arial Black"
                        FontSize="18.667"
                        TextWrapping="Wrap">

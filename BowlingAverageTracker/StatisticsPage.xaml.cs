@@ -1,5 +1,6 @@
 ﻿using BowlingAverageTracker.Dto;
 using BowlingAverageTracker.ViewModel;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
@@ -13,6 +14,11 @@ namespace BowlingAverageTracker
         {
             this.InitializeComponent();
             this.ViewModel = new StatisticsViewModel();
+        }
+
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.Navigate<SelectBowlerViewModel>();
         }
 
         override
