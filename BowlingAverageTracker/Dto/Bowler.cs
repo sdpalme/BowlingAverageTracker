@@ -9,8 +9,9 @@ namespace BowlingAverageTracker.Dto
 {
     public class Bowler : EditableNameDto
     {
-        public static string deleteBowlerQuery = "delete from Bowler where Id = ?";
-        private static string averageQuery = "select avg(Score) as Value from Game where SeriesId in " +
+        public static readonly string insertBowler = "insert into Bowler (Name) values(?)";
+        public static readonly string deleteBowlerQuery = "delete from Bowler where Id = ?";
+        private static readonly string averageQuery = "select avg(Score) as Value from Game where SeriesId in " +
                                              "(select Id from Series where LeagueId in " +
                                              "(select Id from League where BowlerId = ?))";
 

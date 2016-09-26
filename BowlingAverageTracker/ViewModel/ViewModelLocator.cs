@@ -70,6 +70,8 @@ namespace BowlingAverageTracker.ViewModel
             service.Configure(typeof(EditNameViewModel).FullName, typeof(EditNamePage));
             service.Configure(typeof(StatisticsViewModel).FullName, typeof(StatisticsPage));
 
+            service.Configure(typeof(BackupPage).FullName, typeof(BackupPage));
+
             return service;
         }
     }

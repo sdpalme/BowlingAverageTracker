@@ -8,11 +8,12 @@ namespace BowlingAverageTracker.Dto
 {
     public class League : EditableNameDto
     {
-        public static string deleteLeagueQuery = "delete from League where Id = ?";
-        public static string deleteByBowlerQuery = "delete from League where BowlerId = ?";
-        private static string averageQuery = "select round(avg(Score), 2) as Value from Game where SeriesId in " +
+        public static readonly string insertLeague = "insert into League (Name, BowlerId) values(?, ?)";
+        public static readonly string deleteLeagueQuery = "delete from League where Id = ?";
+        public static readonly string deleteByBowlerQuery = "delete from League where BowlerId = ?";
+        private static readonly string averageQuery = "select round(avg(Score), 2) as Value from Game where SeriesId in " +
                                      "(select Id from Series where LeagueId = ?)";
-        private static string gameCountQuery = "select count(*) as Value from Game where SeriesId in " +
+        private static readonly string gameCountQuery = "select count(*) as Value from Game where SeriesId in " +
                                      "(select Id from Series where LeagueId = ?)";
 
         [PrimaryKey, AutoIncrement]

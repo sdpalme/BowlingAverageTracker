@@ -1,4 +1,5 @@
 ﻿using BowlingAverageTracker.Dto;
+using BowlingAverageTracker.ViewModel;
 using SQLite.Net;
 using SQLite.Net.Platform.WinRT;
 using System;
@@ -105,14 +106,22 @@ namespace BowlingAverageTracker
 
         private void initDatabase()
         {
-            var path = Path.Combine(ApplicationData.Current.LocalFolder.Path, "BowlingAverageTracker.sqlite");
-            using (SQLiteConnection conn = new SQLiteConnection(new SQLitePlatformWinRT(), path))
+            try
             {
-                conn.CreateTable<Bowler>();
-                conn.CreateTable<League>();
-                conn.CreateTable<Series>();
-                conn.CreateTable<Game>();
-                //createTestData();
+                BaseViewModel.createDatabase();
+                createTestData();
+            }
+            catch
+            {
+                try
+                {
+                    if (File.Exists(BaseViewModel.DbPath))
+                    {
+                        File.Delete(BaseViewModel.DbPath);
+                    }
+                }
+                catch { }
+                BaseViewModel.createDatabase();
             }
         }
 
@@ -150,65 +159,41 @@ namespace BowlingAverageTracker
 
         private void createTestData()
         {
-            int bowlers = 3;
-            int leagues = 2;
-            int series = 40;
+            int bowlers = 9;
+            int leagues = 10;
+            int series = 150;
             Random rnd = new Random();
-            using (SQLiteConnection conn = new SQLiteConnection(new SQLitePlatformWinRT(),
-    Path.Combine(ApplicationData.Current.LocalFolder.Path, "BowlingAverageTracker.sqlite")))
+            int leagueId = 0;
+            int seriesId = 0;
+            using (SQLiteConnection conn = new SQLiteConnection(new SQLitePlatformWinRT(), BaseViewModel.DbPath))
             {
-                for (int i = 0; i < bowlers; ++i)
+                conn.BeginTransaction();
+                for (int bowlerId = 1; bowlerId <= bowlers; ++bowlerId)
                 {
-                    Bowler b = new Bowler();
-                    b.Name = "Test" + i;
-                    conn.Insert(b);
-                    // 3 game series
-                    for (int j = 0; j < leagues; ++j)
+                    conn.Execute(Bowler.insertBowler, "Test" + bowlerId);
+                    // 3 game league
+                    for (int i = 0; i < leagues; ++i)
                     {
-                        League l = new League();
-                        l.BowlerId = b.Id;
-                        l.Bowler = b;
-                        l.Name = "League" + j;
-                        conn.Insert(l);
-                        for (int k = 0; k < series; ++k)
+                        conn.Execute(League.insertLeague, "League3Games_" + leagueId++, bowlerId);
+                        for (int j = 0; j < series; ++j)
                         {
-                            Series s = new Series();
-                            s.League = l;
-                            s.LeagueId = l.Id;
-                            s.Date = new DateTimeOffset(DateTime.UtcNow.AddDays(k));
-                            conn.Insert(s);
-                            for (int m = 0; m < 3; ++m)
+                            conn.Execute(Series.insertSeries, new DateTimeOffset(DateTime.UtcNow.AddDays(seriesId++)), leagueId);
+                            for (int gameId = 0; gameId < 3; ++gameId)
                             {
-                                Game g = new Game();
-                                g.Series = s;
-                                g.SeriesId = s.Id;
-                                g.Score = rnd.Next(90, 301);
-                                conn.Insert(g);
+                                conn.Execute(Game.insertGame, rnd.Next(90, 301), seriesId);
                             }
                         }
                     }
-                    // 4 game series
-                    for (int j = leagues; j < leagues * 2; ++j)
+                    // 4 game league
+                    for (int i = 0; i < leagues; ++i)
                     {
-                        League l = new League();
-                        l.BowlerId = b.Id;
-                        l.Bowler = b;
-                        l.Name = "League" + j;
-                        conn.Insert(l);
-                        for (int k = 0; k < series; ++k)
+                        conn.Execute(League.insertLeague, "League4Games_" + leagueId++, bowlerId);
+                        for (int j = 0; j < series; ++j)
                         {
-                            Series s = new Series();
-                            s.League = l;
-                            s.LeagueId = l.Id;
-                            s.Date = new DateTimeOffset(DateTime.UtcNow.AddDays(k));
-                            conn.Insert(s);
-                            for (int m = 0; m < 4; ++m)
+                            conn.Execute(Series.insertSeries, new DateTimeOffset(DateTime.UtcNow.AddDays(seriesId++)), leagueId);
+                            for (int gameId = 0; gameId < 4; ++gameId)
                             {
-                                Game g = new Game();
-                                g.Series = s;
-                                g.SeriesId = s.Id;
-                                g.Score = rnd.Next(90, 301);
-                                conn.Insert(g);
+                                conn.Execute(Game.insertGame, rnd.Next(90, 301), seriesId);
                             }
                         }
                     }

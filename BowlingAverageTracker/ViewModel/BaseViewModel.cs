@@ -1,10 +1,9 @@
-﻿using GalaSoft.MvvmLight;
+﻿using BowlingAverageTracker.Dto;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
 using SQLite.Net;
-using SQLite.Net.Async;
 using SQLite.Net.Platform.WinRT;
-using System;
 using System.IO;
 using Windows.Storage;
 
@@ -12,22 +11,18 @@ namespace BowlingAverageTracker.ViewModel
 {
     public class BaseViewModel : ViewModelBase
     {
-        private string dbPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "BowlingAverageTracker.sqlite");
-        
-        protected SQLiteConnection getDBConnection()
-        {
-            return new SQLiteConnection(new SQLitePlatformWinRT(), dbPath);
-        }
-
-        protected SQLiteAsyncConnection getAsyncDBConnection()
-        {
-            Func<SQLiteConnectionWithLock> connectionFactory = new Func<SQLiteConnectionWithLock>(() =>
-                  new SQLiteConnectionWithLock(new SQLitePlatformWinRT(), new SQLiteConnectionString(dbPath, storeDateTimeAsTicks: false)));
-            return new SQLiteAsyncConnection(connectionFactory);
-        }
+        private readonly static string dbFileName = "BowlingAverageTracker.sqlite";
+        public static string DbFileName { get { return dbFileName; } }
+        private readonly static string dbPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, dbFileName);
+        public static string DbPath { get { return dbPath; } }
 
         public BaseViewModel()
         {
+        }
+
+        protected static SQLiteConnection getDBConnection()
+        {
+            return new SQLiteConnection(new SQLitePlatformWinRT(), dbPath);
         }
 
         protected INavigationService NavigationService
@@ -64,10 +59,15 @@ namespace BowlingAverageTracker.ViewModel
             }
         }
 
-        public void updateAsync(object obj)
+        public static void createDatabase()
         {
-            SQLiteAsyncConnection conn = getAsyncDBConnection();
-            conn.UpdateAsync(obj);
+            using (SQLiteConnection conn = getDBConnection())
+            {
+                conn.CreateTable<Bowler>();
+                conn.CreateTable<League>();
+                conn.CreateTable<Series>();
+                conn.CreateTable<Game>();
+            }
         }
     }
 }

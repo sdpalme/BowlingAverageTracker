@@ -9,12 +9,13 @@ namespace BowlingAverageTracker.Dto
 {
     public class Series : BaseDto
     {
-        public static string deleteSeriesQuery = "delete from Series where Id = ?";
-        public static string deleteByLeagueQuery = "delete from Series where LeagueId = ?";
-        public static string deleteByBowlerQuery = "delete from Series where LeagueId in " +
+        public static readonly string insertSeries = "insert into Series (Date, LeagueId) values(?, ?)";
+        public static readonly string deleteSeriesQuery = "delete from Series where Id = ?";
+        public static readonly string deleteByLeagueQuery = "delete from Series where LeagueId = ?";
+        public static readonly string deleteByBowlerQuery = "delete from Series where LeagueId in " +
                                                    "(select Id from League where BowlerId = ?)";
-        private static string averageQuery = "select round(avg(Score), 2) as Value from Game where SeriesId = ?";
-        private static string sumQuery = "select sum(Score) as Value from Game where SeriesId = ?";
+        private static readonly string averageQuery = "select round(avg(Score), 2) as Value from Game where SeriesId = ?";
+        private static readonly string sumQuery = "select sum(Score) as Value from Game where SeriesId = ?";
 
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
