@@ -7,6 +7,7 @@
       xmlns:local="using:BowlingAverageTracker"
       xmlns:localDto="using:BowlingAverageTracker.Dto"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      Background="{StaticResource BackgroundBrush}"
       DataContext="{Binding Path=SelectLeaguePage,
                             Source={StaticResource ViewModelLocator}}"
       mc:Ignorable="d">
@@ -15,7 +16,7 @@
         <CommandBar ClosedDisplayMode="Compact">
             <CommandBar.PrimaryCommands>
                 <AppBarButton x:Name="HomeButton"
-                              Width="53"
+                              Width="58"
                               HorizontalAlignment="Center"
                               VerticalAlignment="Top"
                               Click="HomeButton_Click"
@@ -23,20 +24,20 @@
                               Label="Home" />
                 <AppBarSeparator />
                 <AppBarButton x:Name="StatsButton"
-                              Width="53"
+                              Width="62"
                               HorizontalAlignment="Right"
                               Click="StatsButton_Click"
                               Icon="ShowResults"
                               Label="Statistics" />
                 <AppBarButton x:Name="NewLeague"
-                              Width="53"
+                              Width="58"
                               Click="AddLeague"
                               Icon="Add"
                               Label="New League" />
             </CommandBar.PrimaryCommands>
         </CommandBar>
     </Page.BottomAppBar>
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{StaticResource BackgroundBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="75" />
             <RowDefinition Height="25" />
@@ -50,7 +51,7 @@
                    FontSize="28.5"
                    FontStretch="Normal"
                    FontStyle="Italic"
-                   Foreground="Black"
+                   Foreground="{StaticResource TextBrush}"
                    IsDoubleTapEnabled="False"
                    IsHoldingEnabled="False"
                    IsRightTapEnabled="False"
@@ -67,6 +68,7 @@
                    Margin="10,0"
                    FontFamily="Arial Black"
                    FontSize="18"
+                   Foreground="{StaticResource TextBrush}"
                    Text="{x:Bind ViewModel.Bowler.Name}"
                    TextWrapping="Wrap" />
         <ListView x:Name="LeagueList"
@@ -82,16 +84,18 @@
                     <StackPanel Holding="League_Holding"
                                 IsRightTapEnabled="True"
                                 RightTapped="League_RightTapped">
-                        <TextBlock FontSize="24" Text="{x:Bind Name}" />
-                        <TextBlock FontSize="13">
+                        <TextBlock FontSize="24"
+                                   Foreground="{StaticResource TextBrush}"
+                                   Text="{x:Bind Name}" />
+                        <TextBlock FontSize="13" Foreground="{StaticResource TextBrush}">
                             <Run Text="     League Average: " />
                             <Run Text="{x:Bind Average}" />
                         </TextBlock>
-                        <TextBlock FontSize="13">
+                        <TextBlock FontSize="13" Foreground="{StaticResource TextBrush}">
                             <Run Text="     Number of Series: " />
                             <Run x:Name="SeriesCount" Text="{x:Bind Series.Count}" />
                         </TextBlock>
-                        <TextBlock FontSize="13">
+                        <TextBlock FontSize="13" Foreground="{StaticResource TextBrush}">
                             <Run Text="     Number of Games: " />
                             <Run x:Name="GameCount" Text="{x:Bind GameCount}" />
                         </TextBlock>

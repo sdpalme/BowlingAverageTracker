@@ -10,6 +10,8 @@
             <vm:WindowsViewModelLocator x:Key="ViewModelLocator" />
             <dto:ItemClickEventArgsConverter x:Key="ItemClickEventArgsConverter" />
             <vm:GameRowNumberConverter x:Key="GameRowNumberConverter" />
+            <SolidColorBrush x:Key="BackgroundBrush" Color="White" />
+            <SolidColorBrush x:Key="TextBrush" Color="Black" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

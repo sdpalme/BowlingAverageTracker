@@ -1,0 +1,73 @@
+﻿<Page x:Class="BowlingAverageTracker.OptionsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+      xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:BowlingAverageTracker"
+      xmlns:localDto="using:BowlingAverageTracker.Dto"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      DataContext="{Binding Path=BackupPage,
+                            Source={StaticResource ViewModelLocator}}"
+      mc:Ignorable="d">
+
+    <Page.BottomAppBar>
+        <CommandBar ClosedDisplayMode="Compact">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton x:Name="HomeButton"
+                              Width="58"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Top"
+                              Click="HomeButton_Click"
+                              Icon="Home"
+                              Label="Home" />
+            </CommandBar.PrimaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="65" />
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="Title"
+                   Grid.Row="0"
+                   Height="65"
+                   Margin="43,10,42,10"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="28.5"
+                   FontStyle="Italic"
+                   Text="Options"
+                   TextWrapping="Wrap" />
+        <StackPanel Grid.Row="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Orientation="Vertical">
+            <StackPanel HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                <Button x:Name="ColorBtn"
+                        Width="200"
+                        Height="50"
+                        Margin="10,0,10,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Click="ColorBtn_Click"
+                        Content="Change Colors" />
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        Orientation="Horizontal">
+                <Button x:Name="BackupBtn"
+                        Width="200"
+                        Height="50"
+                        Margin="10,25,10,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Click="BackupBtn_Click"
+                        Content="Backup and Restore" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

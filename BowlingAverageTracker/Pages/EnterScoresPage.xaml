@@ -7,6 +7,7 @@
       xmlns:local="using:BowlingAverageTracker"
       xmlns:localDto="using:BowlingAverageTracker.Dto"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      Background="{StaticResource BackgroundBrush}"
       DataContext="{Binding Path=EnterScoresPage,
                             Source={StaticResource ViewModelLocator}}"
       mc:Ignorable="d">
@@ -15,7 +16,7 @@
         <CommandBar ClosedDisplayMode="Compact">
             <CommandBar.PrimaryCommands>
                 <AppBarButton x:Name="HomeButton"
-                              Width="53"
+                              Width="58"
                               HorizontalAlignment="Center"
                               VerticalAlignment="Top"
                               Click="HomeButton_Click"
@@ -23,14 +24,14 @@
                               Label="Home" />
                 <AppBarSeparator />
                 <AppBarButton x:Name="AddGameBtn"
-                              Width="53"
+                              Width="58"
                               Click="AddGame"
                               Icon="Add"
                               Label="Add Game" />
             </CommandBar.PrimaryCommands>
         </CommandBar>
     </Page.BottomAppBar>
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{StaticResource BackgroundBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="75" />
             <RowDefinition Height="25" />
@@ -48,7 +49,7 @@
                    FontSize="28.5"
                    FontStretch="Normal"
                    FontStyle="Italic"
-                   Foreground="Black"
+                   Foreground="{StaticResource TextBrush}"
                    IsDoubleTapEnabled="False"
                    IsHoldingEnabled="False"
                    IsRightTapEnabled="False"
@@ -65,6 +66,7 @@
                    Margin="10,0"
                    FontFamily="Arial Black"
                    FontSize="18"
+                   Foreground="{StaticResource TextBrush}"
                    TextWrapping="Wrap">
             <Run Text="{x:Bind ViewModel.Series.League.Bowler.Name}" />
             <Run Text=" - " />
@@ -78,6 +80,7 @@
                     Date="{x:Bind ViewModel.Series.LocalDate}"
                     DateChanged="SeriesDateChanged"
                     FontSize="20"
+                    Foreground="{StaticResource TextBrush}"
                     d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" />
         <ListView x:Name="GameList"
                   Grid.Row="5"
@@ -97,7 +100,7 @@
                     <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}" />
                     <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}" />
                     <Setter Property="Background" Value="Transparent" />
-                    <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseHighBrush}" />
+                    <Setter Property="Foreground" Value="{StaticResource TextBrush}" />
                     <Setter Property="TabNavigation" Value="Local" />
                     <Setter Property="IsHoldingEnabled" Value="True" />
                     <Setter Property="Padding" Value="10,0,10,0" />
@@ -127,7 +130,8 @@
                                 RightTapped="Game_RightTapped">
                         <TextBlock HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
-                                   FontSize="18">
+                                   FontSize="18"
+                                   Foreground="{StaticResource TextBrush}">
                             <Run Text="Game " />
                             <Run Text="{x:Bind Id, Converter={StaticResource GameRowNumberConverter}}" />
                         </TextBlock>
@@ -139,6 +143,7 @@
                                  HorizontalAlignment="Center"
                                  VerticalAlignment="Center"
                                  FontSize="18"
+                                 Foreground="{StaticResource TextBrush}"
                                  GotFocus="Score_GotFocus"
                                  InputScope="Number"
                                  LostFocus="Score_LostFocus"
@@ -161,6 +166,7 @@
             <TextBlock Margin="10,0"
                        FontFamily="Arial Black"
                        FontSize="18.667"
+                       Foreground="{StaticResource TextBrush}"
                        TextWrapping="Wrap">
                 <Run Text="Total Pins: " />
                 <Run x:Name="SeriesTotalPins" Text="{x:Bind ViewModel.Series.TotalPins}" />
@@ -168,6 +174,7 @@
             <TextBlock Margin="10,0"
                        FontFamily="Arial Black"
                        FontSize="18.667"
+                       Foreground="{StaticResource TextBrush}"
                        TextWrapping="Wrap">
                 <Run Text="Series Average: " />
                 <Run x:Name="SeriesAverageText" Text="{x:Bind ViewModel.Series.Average}" />

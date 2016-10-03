@@ -59,9 +59,9 @@ namespace BowlingAverageTracker
             ViewModel.Bowlers.Remove(bowler);
         }
 
-        private void Backup_Click(object sender, RoutedEventArgs e)
+        private void Options_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.Navigate<BackupPage>();
+            ViewModel.Navigate<OptionsPage>();
         }
     }
 }

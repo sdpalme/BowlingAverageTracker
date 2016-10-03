@@ -111,6 +111,7 @@ namespace BowlingAverageTracker
                     {
                         throw new Exception("Copy failed: " + importPath);
                     }
+                    BaseViewModel.createDatabase();
                     await showMessage("Database import successful.");
                 }
             }
@@ -136,6 +137,7 @@ namespace BowlingAverageTracker
             {
                 await Task.Run(() => deleteIfExists(importPath));
                 await Task.Run(() => deleteIfExists(backupPath));
+                ColorsViewModel.setBrushColors();
                 restoreProgressRing.IsEnabled = false;
                 restoreProgressRing.Visibility = Visibility.Collapsed;
                 toggleButtons(true);
@@ -298,7 +300,8 @@ namespace BowlingAverageTracker
                         return verifyTable(testConn, conn, "Bowler") &&
                             verifyTable(testConn, conn, "League") &&
                             verifyTable(testConn, conn, "Series") &&
-                            verifyTable(testConn, conn, "Game");
+                            verifyTable(testConn, conn, "Game") &&
+                            verifyTable(testConn, conn, "ColorSettings");
                     }
                 }
             }

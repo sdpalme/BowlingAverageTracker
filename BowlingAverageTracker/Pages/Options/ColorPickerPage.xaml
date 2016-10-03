@@ -1,0 +1,74 @@
+﻿<Page x:Class="BowlingAverageTracker.ColorPickerPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+      xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+      xmlns:cp="using:ColorPicker"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:BowlingAverageTracker"
+      xmlns:localDto="using:BowlingAverageTracker.Dto"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      DataContext="{Binding Path=BackupPage,
+                            Source={StaticResource ViewModelLocator}}"
+      mc:Ignorable="d">
+
+    <Page.BottomAppBar>
+        <CommandBar ClosedDisplayMode="Compact">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton x:Name="HomeButton"
+                              Width="58"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Top"
+                              Click="HomeButton_Click"
+                              Icon="Home"
+                              Label="Home" />
+            </CommandBar.PrimaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="Title"
+                   Grid.Row="0"
+                   Height="65"
+                   Margin="43,10,42,10"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="28.5"
+                   FontStyle="Italic"
+                   Text="Color Picker"
+                   TextWrapping="Wrap" />
+        <StackPanel Grid.Row="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Orientation="Vertical">
+            <cp:ColorPicker x:Name="Picker"
+                            Width="270"
+                            Height="375"
+                            Margin="0,0,0,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center" />
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <Button x:Name="SelectBtn"
+                        Width="150"
+                        Height="50"
+                        Margin="0,10,10,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Click="SelectBtn_Click"
+                        Content="Select" />
+                <Button x:Name="CancelBtn"
+                        Width="150"
+                        Height="50"
+                        Margin="10,10,0,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Click="CancelBtn_Click"
+                        Content="Cancel" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

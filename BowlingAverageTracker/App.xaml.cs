@@ -7,7 +7,6 @@ using System.IO;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation.Metadata;
-using Windows.Storage;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -44,6 +43,7 @@ namespace BowlingAverageTracker
             }
 #endif
             initDatabase();
+            ColorsViewModel.setBrushColors();
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
@@ -109,7 +109,7 @@ namespace BowlingAverageTracker
             try
             {
                 BaseViewModel.createDatabase();
-                createTestData();
+                //createTestData();
             }
             catch
             {
@@ -159,9 +159,9 @@ namespace BowlingAverageTracker
 
         private void createTestData()
         {
-            int bowlers = 9;
-            int leagues = 10;
-            int series = 150;
+            int bowlers = 5;
+            int leagues = 3;
+            int series = 75;
             Random rnd = new Random();
             int leagueId = 0;
             int seriesId = 0;

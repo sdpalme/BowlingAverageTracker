@@ -1,22 +1,28 @@
 ﻿using BowlingAverageTracker.Dto;
 using SQLite.Net;
 using System.Collections.Generic;
+using System;
 
 namespace BowlingAverageTracker.ViewModel
 {
     public class StatisticsViewModel : BaseViewModel
     {
-        private static string highGameScoreQuery = "select max(Score) as Value from Game where SeriesId in " +
+        private static readonly string highGameScoreQuery = "select max(Score) as Value from Game where SeriesId in " +
             "(select Id from Series where LeagueId in (select Id from League where BowlerId = ?))";
-        private static string lowGameScoreQuery = "select min(Score) as Value from Game where SeriesId in " +
+        private static readonly string lowGameScoreQuery = "select min(Score) as Value from Game where SeriesId in " +
             "(select Id from Series where LeagueId in (select Id from League where BowlerId = ?))";
-        private static string gameScoreSeriesQuery = "select * from Series where Id in " +
-            "(select SeriesId from Game where Score = ?) order by Date desc";
-        private static string seriesCountQuery = "select * from Series where Id in " +
+        private static readonly string gameScoreSeriesQuery = "select * from Series where Id in " +
+            "(select SeriesId from Game where Score = ?) and LeagueId in (select Id from League where BowlerId = ?) order by Date desc";
+        private static readonly string seriesCountQuery = "select * from Series where Id in " +
             "(select SeriesId from (select SeriesId, count(*) as Count from Game group by SeriesId) where Count = ? " +
             "and SeriesId in (select Id from Series where LeagueId in (select Id from League where BowlerId = ?))) " +
-            "order by Date desc";
-        private static string seriesScoreQuery = "select sum(Score) as Value from Game where SeriesId = ? group by SeriesId";
+            "order by Id";
+        private static readonly string seriesTotalPinsQuery = "select sum(Score) as Value from Game where SeriesId in " +
+            "(select Id from Series where LeagueId in (select Id from League where BowlerId = ?)) " +
+            "and SeriesId in (select SeriesId from (select SeriesId, count(*) as Count from Game group by SeriesId) where Count = ?) " +
+            "group by SeriesId order by SeriesId";
+
+        private static readonly DateComparison dateComparison = new DateComparison();
 
         public Bowler Bowler { get; set; }
 
@@ -65,7 +71,7 @@ namespace BowlingAverageTracker.ViewModel
                 e.MoveNext();
                 HighGameScore = e.Current.Value;
                 bool first = true;
-                foreach (Series s in conn.Query<Series>(gameScoreSeriesQuery, HighGameScore))
+                foreach (Series s in conn.Query<Series>(gameScoreSeriesQuery, HighGameScore, Bowler.Id))
                 {
                     if (!first)
                     {
@@ -91,7 +97,7 @@ namespace BowlingAverageTracker.ViewModel
                 e.MoveNext();
                 LowGameScore = e.Current.Value;
                 bool first = true;
-                foreach (Series s in conn.Query<Series>(gameScoreSeriesQuery, LowGameScore))
+                foreach (Series s in conn.Query<Series>(gameScoreSeriesQuery, LowGameScore, Bowler.Id))
                 {
                     if (!first)
                     {
@@ -109,105 +115,185 @@ namespace BowlingAverageTracker.ViewModel
 
         private void populateHigh3GameSeries(SQLiteConnection conn)
         {
-            bool first = true;
+            High3GameSeriesScore = -1;
+            High3GameSeriesDates = "";
+            List<Series> highSeries = new List<Series>();
+            List<IntWrapper> seriesScores = conn.Query<IntWrapper>(seriesTotalPinsQuery, Bowler.Id, 3);
+            int count = 0;
             foreach (Series s in conn.Query<Series>(seriesCountQuery, 3, Bowler.Id))
             {
-                if (!first)
+                int total = seriesScores[count++].Value;
+                if (total > High3GameSeriesScore)
                 {
-                    High3GameSeriesDates = High3GameSeriesDates + "\n";
+                    High3GameSeriesScore = total;
+                    highSeries.Clear();
+                    highSeries.Add(s);
                 }
-                else
+                else if (total == High3GameSeriesScore)
                 {
-                    List<IntWrapper> highScores = conn.Query<IntWrapper>(seriesScoreQuery, s.Id);
-                    if (highScores != null && highScores.Count >= 1)
+                    highSeries.Add(s);
+                }
+            }
+            if (High3GameSeriesScore == -1)
+            {
+                High3GameSeriesScore = 0;
+            }
+            else
+            {
+                highSeries.Sort(dateComparison);
+                bool first = true;
+                foreach (Series s in highSeries)
+                {
+                    if (first)
                     {
-                        IEnumerator<IntWrapper> e = highScores.GetEnumerator();
-                        e.Reset();
-                        e.MoveNext();
-                        High3GameSeriesScore = e.Current.Value;
+                        High3GameSeriesDates = s.LocalDate.ToString("d");
+                        first = false;
                     }
-                    High3GameSeriesDates = "";
-                    first = false;
+                    else
+                    {
+                        High3GameSeriesDates = High3GameSeriesDates + "\n" + s.LocalDate.ToString("d");
+                    }
                 }
-                High3GameSeriesDates = High3GameSeriesDates + s.LocalDate.ToString("d");
             }
         }
 
         private void populateHigh4GameSeries(SQLiteConnection conn)
         {
-            bool first = true;
+            High4GameSeriesScore = -1;
+            High4GameSeriesDates = "";
+            List<Series> highSeries = new List<Series>();
+            List<IntWrapper> seriesScores = conn.Query<IntWrapper>(seriesTotalPinsQuery, Bowler.Id, 4);
+            int count = 0;
             foreach (Series s in conn.Query<Series>(seriesCountQuery, 4, Bowler.Id))
             {
-                if (!first)
+                int total = seriesScores[count++].Value;
+                if (total > High4GameSeriesScore)
                 {
-                    High4GameSeriesDates = High4GameSeriesDates + "\n";
+                    High4GameSeriesScore = total;
+                    highSeries.Clear();
+                    highSeries.Add(s);
                 }
-                else
+                else if (total == High4GameSeriesScore)
                 {
-                    List<IntWrapper> highScores = conn.Query<IntWrapper>(seriesScoreQuery, s.Id);
-                    if (highScores != null && highScores.Count >= 1)
+                    highSeries.Add(s);
+                }
+            }
+            if (High4GameSeriesScore == -1)
+            {
+                High4GameSeriesScore = 0;
+            }
+            else
+            {
+                highSeries.Sort(dateComparison);
+                bool first = true;
+                foreach (Series s in highSeries)
+                {
+                    if (first)
                     {
-                        IEnumerator<IntWrapper> e = highScores.GetEnumerator();
-                        e.Reset();
-                        e.MoveNext();
-                        High4GameSeriesScore = e.Current.Value;
+                        High4GameSeriesDates = s.LocalDate.ToString("d");
+                        first = false;
                     }
-                    High4GameSeriesDates = "";
-                    first = false;
+                    else
+                    {
+                        High4GameSeriesDates = High4GameSeriesDates + "\n" + s.LocalDate.ToString("d");
+                    }
                 }
-                High4GameSeriesDates = High4GameSeriesDates + s.LocalDate.ToString("d");
             }
         }
 
         private void populateLow3GameSeries(SQLiteConnection conn)
         {
-            bool first = true;
+            Low3GameSeriesScore = int.MaxValue;
+            Low3GameSeriesDates = "";
+            List<Series> lowSeries = new List<Series>();
+            List<IntWrapper> seriesScores = conn.Query<IntWrapper>(seriesTotalPinsQuery, Bowler.Id, 3);
+            int count = 0;
             foreach (Series s in conn.Query<Series>(seriesCountQuery, 3, Bowler.Id))
             {
-                if (!first)
+                int total = seriesScores[count++].Value;
+                if (total < Low3GameSeriesScore)
                 {
-                    Low3GameSeriesDates = Low3GameSeriesDates + "\n";
+                    Low3GameSeriesScore = total;
+                    lowSeries.Clear();
+                    lowSeries.Add(s);
                 }
-                else
+                else if (total == Low3GameSeriesScore)
                 {
-                    List<IntWrapper> lowScores = conn.Query<IntWrapper>(seriesScoreQuery, s.Id);
-                    if (lowScores != null && lowScores.Count >= 1)
+                    lowSeries.Add(s);
+                }
+            }
+            if (Low3GameSeriesScore == int.MaxValue)
+            {
+                Low3GameSeriesScore = 0;
+            }
+            else
+            {
+                lowSeries.Sort(dateComparison);
+                bool first = true;
+                foreach (Series s in lowSeries)
+                {
+                    if (first)
                     {
-                        IEnumerator<IntWrapper> e = lowScores.GetEnumerator();
-                        e.Reset();
-                        e.MoveNext();
-                        Low3GameSeriesScore = e.Current.Value;
+                        Low3GameSeriesDates = s.LocalDate.ToString("d");
+                        first = false;
                     }
-                    Low3GameSeriesDates = "";
-                    first = false;
+                    else
+                    {
+                        Low3GameSeriesDates = Low3GameSeriesDates + "\n" + s.LocalDate.ToString("d");
+                    }
                 }
-                Low3GameSeriesDates = Low3GameSeriesDates + s.LocalDate.ToString("d");
             }
         }
 
         private void populateLow4GameSeries(SQLiteConnection conn)
         {
-            bool first = true;
+            Low4GameSeriesScore = int.MaxValue;
+            Low4GameSeriesDates = "";
+            List<Series> lowSeries = new List<Series>();
+            List<IntWrapper> seriesScores = conn.Query<IntWrapper>(seriesTotalPinsQuery, Bowler.Id, 4);
+            int count = 0;
             foreach (Series s in conn.Query<Series>(seriesCountQuery, 4, Bowler.Id))
             {
-                if (!first)
+                int total = seriesScores[count++].Value;
+                if (total < Low4GameSeriesScore)
                 {
-                    Low4GameSeriesDates = Low4GameSeriesDates + "\n";
+                    Low4GameSeriesScore = total;
+                    lowSeries.Clear();
+                    lowSeries.Add(s);
                 }
-                else
+                else if (total == Low4GameSeriesScore)
                 {
-                    List<IntWrapper> lowScores = conn.Query<IntWrapper>(seriesScoreQuery, s.Id);
-                    if (lowScores != null && lowScores.Count >= 1)
+                    lowSeries.Add(s);
+                }
+            }
+            if (Low4GameSeriesScore == int.MaxValue)
+            {
+                Low4GameSeriesScore = 0;
+            }
+            else
+            {
+                lowSeries.Sort(dateComparison);
+                bool first = true;
+                foreach (Series s in lowSeries)
+                {
+                    if (first)
                     {
-                        IEnumerator<IntWrapper> e = lowScores.GetEnumerator();
-                        e.Reset();
-                        e.MoveNext();
-                        Low4GameSeriesScore = e.Current.Value;
+                        Low4GameSeriesDates = s.LocalDate.ToString("d");
+                        first = false;
                     }
-                    Low4GameSeriesDates = "";
-                    first = false;
+                    else
+                    {
+                        Low4GameSeriesDates = Low4GameSeriesDates + "\n" + s.LocalDate.ToString("d");
+                    }
                 }
-                Low4GameSeriesDates = Low4GameSeriesDates + s.LocalDate.ToString("d");
+            }
+        }
+
+        private class DateComparison : IComparer<Series>
+        {
+            public int Compare(Series x, Series y)
+            {
+                return x.Date.CompareTo(y.Date) * -1;
             }
         }
     }

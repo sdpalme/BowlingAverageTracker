@@ -7,6 +7,7 @@
       xmlns:local="using:BowlingAverageTracker"
       xmlns:localDto="using:BowlingAverageTracker.Dto"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      Background="{StaticResource BackgroundBrush}"
       DataContext="{Binding Path=SelectBowlerPage,
                             Source={StaticResource ViewModelLocator}}"
       mc:Ignorable="d">
@@ -14,21 +15,21 @@
     <Page.BottomAppBar>
         <CommandBar ClosedDisplayMode="Compact">
             <CommandBar.PrimaryCommands>
-                <AppBarButton x:Name="Backup"
-                              Width="53"
-                              Click="Backup_Click"
-                              Icon="ReShare"
-                              Label="Backup" />
+                <AppBarButton x:Name="Options"
+                              Width="58"
+                              Click="Options_Click"
+                              Icon="Setting"
+                              Label="Options" />
                 <AppBarSeparator />
                 <AppBarButton x:Name="NewBowler"
-                              Width="53"
+                              Width="58"
                               Click="AddBowler"
                               Icon="Add"
                               Label="New Bowler" />
             </CommandBar.PrimaryCommands>
         </CommandBar>
     </Page.BottomAppBar>
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{StaticResource BackgroundBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="75" />
             <RowDefinition Height="*" />
@@ -39,7 +40,7 @@
                    FontSize="28.5"
                    FontStretch="Normal"
                    FontStyle="Italic"
-                   Foreground="Black"
+                   Foreground="{StaticResource TextBrush}"
                    IsDoubleTapEnabled="False"
                    IsHoldingEnabled="False"
                    IsRightTapEnabled="False"
@@ -65,8 +66,12 @@
                     <StackPanel Holding="Bowler_Holding"
                                 IsRightTapEnabled="True"
                                 RightTapped="Bowler_RightTapped">
-                        <TextBlock FontSize="24" Text="{x:Bind NameLine}" />
-                        <TextBlock FontSize="13" Text="{x:Bind AverageLine}" />
+                        <TextBlock FontSize="24"
+                                   Foreground="{StaticResource TextBrush}"
+                                   Text="{x:Bind NameLine}" />
+                        <TextBlock FontSize="13"
+                                   Foreground="{StaticResource TextBrush}"
+                                   Text="{x:Bind AverageLine}" />
                         <FlyoutBase.AttachedFlyout>
                             <Flyout>
                                 <StackPanel>

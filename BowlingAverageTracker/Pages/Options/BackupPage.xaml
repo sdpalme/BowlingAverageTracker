@@ -15,7 +15,7 @@
         <CommandBar ClosedDisplayMode="Compact">
             <CommandBar.PrimaryCommands>
                 <AppBarButton x:Name="HomeButton"
-                              Width="53"
+                              Width="58"
                               HorizontalAlignment="Center"
                               VerticalAlignment="Top"
                               Click="HomeButton_Click"
@@ -24,7 +24,7 @@
             </CommandBar.PrimaryCommands>
         </CommandBar>
     </Page.BottomAppBar>
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="75" />
             <RowDefinition Height="*" />

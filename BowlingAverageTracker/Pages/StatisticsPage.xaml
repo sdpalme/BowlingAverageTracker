@@ -5,12 +5,13 @@
       xmlns:local="using:BowlingAverageTracker"
       xmlns:localDto="using:BowlingAverageTracker.Dto"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      Background="{StaticResource BackgroundBrush}"
       mc:Ignorable="d">
     <Page.BottomAppBar>
         <CommandBar ClosedDisplayMode="Compact">
             <CommandBar.PrimaryCommands>
                 <AppBarButton x:Name="HomeButton"
-                              Width="53"
+                              Width="58"
                               HorizontalAlignment="Center"
                               VerticalAlignment="Top"
                               Click="HomeButton_Click"
@@ -19,7 +20,7 @@
             </CommandBar.PrimaryCommands>
         </CommandBar>
     </Page.BottomAppBar>
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{StaticResource BackgroundBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="75" />
             <RowDefinition Height="25" />
@@ -34,7 +35,7 @@
                    FontSize="28.5"
                    FontStretch="Normal"
                    FontStyle="Italic"
-                   Foreground="Black"
+                   Foreground="{StaticResource TextBrush}"
                    IsDoubleTapEnabled="False"
                    IsHoldingEnabled="False"
                    IsRightTapEnabled="False"
@@ -51,6 +52,7 @@
                    Margin="10,0"
                    FontFamily="Arial Black"
                    FontSize="18"
+                   Foreground="{StaticResource TextBrush}"
                    Text="{x:Bind ViewModel.Bowler.Name}"
                    TextWrapping="Wrap" />
         <ScrollViewer Grid.Row="3"
@@ -81,6 +83,7 @@
                                Grid.Column="0"
                                VerticalAlignment="Center"
                                FontSize="21.333"
+                               Foreground="{StaticResource TextBrush}"
                                Text="High Game" />
                     <TextBlock Name="HighGameScore"
                                Grid.Row="0"
@@ -88,6 +91,7 @@
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                FontSize="21"
+                               Foreground="{StaticResource TextBrush}"
                                Text="{x:Bind ViewModel.HighGameScore}" />
                     <TextBlock Name="HighGameDates"
                                Grid.Row="0"
@@ -95,20 +99,24 @@
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                FontSize="18"
+                               Foreground="{StaticResource TextBrush}"
                                Text="{x:Bind ViewModel.HighGameDates}" />
                     <TextBlock Grid.Row="1"
                                Grid.Column="0"
                                VerticalAlignment="Center"
                                FontSize="20"
+                               Foreground="{StaticResource TextBrush}"
                                Text="" />
                     <StackPanel Grid.Row="2"
                                 Grid.Column="0"
                                 VerticalAlignment="Center">
                         <TextBlock VerticalAlignment="Center"
                                    FontSize="21.333"
+                                   Foreground="{StaticResource TextBrush}"
                                    Text="High Series" />
                         <TextBlock VerticalAlignment="Center"
                                    FontSize="15"
+                                   Foreground="{StaticResource TextBrush}"
                                    Text="   3 Game Series" />
                     </StackPanel>
                     <TextBlock Name="HighSeriesScore3"
@@ -117,6 +125,7 @@
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                FontSize="21"
+                               Foreground="{StaticResource TextBrush}"
                                Text="{x:Bind ViewModel.High3GameSeriesScore}" />
                     <TextBlock Name="HighSeriesDates3"
                                Grid.Row="2"
@@ -124,20 +133,24 @@
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                FontSize="18"
+                               Foreground="{StaticResource TextBrush}"
                                Text="{x:Bind ViewModel.High3GameSeriesDates}" />
                     <TextBlock Grid.Row="3"
                                Grid.Column="0"
                                VerticalAlignment="Center"
                                FontSize="20"
+                               Foreground="{StaticResource TextBrush}"
                                Text="" />
                     <StackPanel Grid.Row="4"
                                 Grid.Column="0"
                                 VerticalAlignment="Center">
                         <TextBlock VerticalAlignment="Center"
                                    FontSize="21.333"
+                                   Foreground="{StaticResource TextBrush}"
                                    Text="High Series" />
                         <TextBlock VerticalAlignment="Center"
                                    FontSize="15"
+                                   Foreground="{StaticResource TextBrush}"
                                    Text="   4 Game Series" />
                     </StackPanel>
                     <TextBlock Name="HighSeriesScore4"
@@ -146,6 +159,7 @@
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                FontSize="21"
+                               Foreground="{StaticResource TextBrush}"
                                Text="{x:Bind ViewModel.High4GameSeriesScore}" />
                     <TextBlock Name="HighSeriesDates4"
                                Grid.Row="4"
@@ -153,16 +167,19 @@
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                FontSize="18"
+                               Foreground="{StaticResource TextBrush}"
                                Text="{x:Bind ViewModel.High4GameSeriesDates}" />
                     <TextBlock Grid.Row="5"
                                Grid.Column="0"
                                VerticalAlignment="Center"
                                FontSize="20"
+                               Foreground="{StaticResource TextBrush}"
                                Text="" />
                     <TextBlock Grid.Row="6"
                                Grid.Column="0"
                                VerticalAlignment="Center"
                                FontSize="21.333"
+                               Foreground="{StaticResource TextBrush}"
                                Text="Low Game" />
                     <TextBlock Name="LowGameScore"
                                Grid.Row="6"
@@ -170,6 +187,7 @@
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                FontSize="21"
+                               Foreground="{StaticResource TextBrush}"
                                Text="{x:Bind ViewModel.LowGameScore}" />
                     <TextBlock Name="LowGameDates"
                                Grid.Row="6"
@@ -177,20 +195,24 @@
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                FontSize="18"
+                               Foreground="{StaticResource TextBrush}"
                                Text="{x:Bind ViewModel.LowGameDates}" />
                     <TextBlock Grid.Row="7"
                                Grid.Column="0"
                                VerticalAlignment="Center"
                                FontSize="20"
+                               Foreground="{StaticResource TextBrush}"
                                Text="" />
                     <StackPanel Grid.Row="8"
                                 Grid.Column="0"
                                 VerticalAlignment="Center">
                         <TextBlock VerticalAlignment="Center"
                                    FontSize="21.333"
+                                   Foreground="{StaticResource TextBrush}"
                                    Text="Low Series" />
                         <TextBlock VerticalAlignment="Center"
                                    FontSize="15"
+                                   Foreground="{StaticResource TextBrush}"
                                    Text="   3 Game Series" />
                     </StackPanel>
                     <TextBlock Name="LowSeriesScore3"
@@ -199,6 +221,7 @@
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                FontSize="21"
+                               Foreground="{StaticResource TextBrush}"
                                Text="{x:Bind ViewModel.Low3GameSeriesScore}" />
                     <TextBlock Name="LowSeriesDates3"
                                Grid.Row="8"
@@ -206,20 +229,24 @@
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                FontSize="18"
+                               Foreground="{StaticResource TextBrush}"
                                Text="{x:Bind ViewModel.Low3GameSeriesDates}" />
                     <TextBlock Grid.Row="9"
                                Grid.Column="0"
                                VerticalAlignment="Center"
                                FontSize="20"
+                               Foreground="{StaticResource TextBrush}"
                                Text="" />
                     <StackPanel Grid.Row="10"
                                 Grid.Column="0"
                                 VerticalAlignment="Center">
                         <TextBlock VerticalAlignment="Center"
                                    FontSize="21.333"
+                                   Foreground="{StaticResource TextBrush}"
                                    Text="Low Series" />
                         <TextBlock VerticalAlignment="Center"
                                    FontSize="15"
+                                   Foreground="{StaticResource TextBrush}"
                                    Text="   4 Game Series" />
                     </StackPanel>
                     <TextBlock Name="LowSeriesScore4"
@@ -228,6 +255,7 @@
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                FontSize="21"
+                               Foreground="{StaticResource TextBrush}"
                                Text="{x:Bind ViewModel.Low4GameSeriesScore}" />
                     <TextBlock Name="LowSeriesDates4"
                                Grid.Row="10"
@@ -235,6 +263,7 @@
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                FontSize="18"
+                               Foreground="{StaticResource TextBrush}"
                                Text="{x:Bind ViewModel.Low4GameSeriesDates}" />
                 </Grid>
             </StackPanel>

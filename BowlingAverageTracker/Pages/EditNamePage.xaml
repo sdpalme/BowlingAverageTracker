@@ -4,12 +4,13 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="using:BowlingAverageTracker"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      Background="{StaticResource BackgroundBrush}"
       DataContext="{Binding Path=EditNamePage,
                             Source={StaticResource ViewModelLocator}}"
       Loaded="pageLoaded"
       mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{StaticResource BackgroundBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="75" />
             <RowDefinition Height="175" />
@@ -24,6 +25,7 @@
                    VerticalAlignment="Center"
                    FontSize="28.5"
                    FontStyle="Italic"
+                   Foreground="{StaticResource TextBrush}"
                    Text="Name"
                    TextWrapping="Wrap" />
         <TextBox x:Name="NameBox"
@@ -44,7 +46,10 @@
                 Margin="0,0,0,0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
+                BorderBrush="{StaticResource TextBrush}"
+                BorderThickness="2"
                 Click="SaveBtn_Click"
-                Content="Save" />
+                Content="Save"
+                Foreground="{StaticResource TextBrush}" />
     </Grid>
 </Page>
