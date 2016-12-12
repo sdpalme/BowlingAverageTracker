@@ -187,6 +187,7 @@ namespace BowlingAverageTracker
                                     }
                                 }
                                 destConn.Commit();
+                                destConn.Execute("vacuum");
                                 await showMessage("Import complete.");
                             }
                             catch (Exception ex)
@@ -219,6 +220,7 @@ namespace BowlingAverageTracker
             StorageFile pickedFile = await openpicker.PickSingleFileAsync();
             if (pickedFile != null)
             {
+                deleteIfExists(BaseViewModel.DbPath + ".import");
                 StorageFile localImport = await ApplicationData.Current.LocalFolder.CreateFileAsync(BaseViewModel.DbFileName + ".import",
                         CreationCollisionOption.ReplaceExisting);
                 await pickedFile.CopyAndReplaceAsync(localImport);
@@ -282,6 +284,7 @@ namespace BowlingAverageTracker
             {
                 try
                 {
+                    File.SetAttributes(file, System.IO.FileAttributes.Normal);
                     File.Delete(file);
                 }
                 catch { }

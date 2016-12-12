@@ -4,7 +4,6 @@ using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
 using SQLite.Net;
 using SQLite.Net.Platform.WinRT;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Windows.Storage;
@@ -48,7 +47,6 @@ namespace BowlingAverageTracker.ViewModel
             using (SQLiteConnection conn = getDBConnection())
             {
                 conn.Insert(obj);
-                conn.Commit();
             }
         }
 
@@ -57,12 +55,19 @@ namespace BowlingAverageTracker.ViewModel
             using (SQLiteConnection conn = getDBConnection())
             {
                 conn.Update(obj);
-                conn.Commit();
             }
         }
 
         public static void createDatabase()
         {
+            if (File.Exists(dbPath))
+            {
+                try
+                {
+                    File.SetAttributes(dbPath, System.IO.FileAttributes.Normal);
+                }
+                catch { }
+            }
             using (SQLiteConnection conn = getDBConnection())
             {
                 conn.CreateTable<Bowler>();
@@ -79,6 +84,7 @@ namespace BowlingAverageTracker.ViewModel
                     s.TextColor = 0xFF000000;
                     new BaseViewModel().create(s);
                 }
+                conn.Execute("vacuum");
             }
         }
     }

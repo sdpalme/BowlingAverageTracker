@@ -106,6 +106,24 @@ namespace BowlingAverageTracker
 
         private void initDatabase()
         {
+            if (File.Exists(BaseViewModel.DbPath + ".import"))
+            {
+                try
+                {
+                    File.SetAttributes(BaseViewModel.DbPath + ".import", FileAttributes.Normal);
+                    File.Delete(BaseViewModel.DbPath + ".import");
+                }
+                catch { }
+            }
+            if (File.Exists(BaseViewModel.DbPath + ".bak"))
+            {
+                try
+                {
+                    File.SetAttributes(BaseViewModel.DbPath + ".bak", FileAttributes.Normal);
+                    File.Delete(BaseViewModel.DbPath + ".bak");
+                }
+                catch { }
+            }
             try
             {
                 BaseViewModel.createDatabase();
