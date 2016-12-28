@@ -43,5 +43,10 @@ namespace BowlingAverageTracker
         {
             viewModel.Navigate<BackupPage>();
         }
+
+        private void NavigationBtn_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.Navigate<NavigationViewModel>();
+        }
     }
 }

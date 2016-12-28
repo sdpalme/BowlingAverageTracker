@@ -1,0 +1,96 @@
+﻿<Page
+    x:Class="BowlingAverageTracker.NavigationPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:BowlingAverageTracker"
+    xmlns:localDto="using:BowlingAverageTracker.Dto"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    DataContext="{Binding Path=NavigationPage, Source={StaticResource ViewModelLocator}}"
+    mc:Ignorable="d">
+
+    <Page.BottomAppBar>
+        <CommandBar ClosedDisplayMode="Compact">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton
+                    x:Name="HomeButton"
+                    Width="58"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Click="HomeButton_Click"
+                    Icon="Home"
+                    Label="Home" />
+            </CommandBar.PrimaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="65" />
+        </Grid.RowDefinitions>
+        <TextBlock
+            x:Name="Title"
+            Grid.Row="0"
+            Height="65"
+            Margin="43,10,42,10"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="28.5"
+            FontStyle="Italic"
+            Text="Navigation Settings"
+            TextWrapping="Wrap" />
+        <StackPanel
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Orientation="Vertical">
+            <Grid Padding="0,0,-30,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="65" />
+                    <RowDefinition Height="65" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="155" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="0,0,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    FontSize="20"
+                    Text="Disable Leagues" />
+                <ToggleSwitch
+                    x:Name="disableLeaguesSwitch"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Margin="0,0,0,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    IsOn="{x:Bind ViewModel.Settings.SkipLeaguePage}"
+                    Toggled="disableLeaguesSwitch_Toggled" />
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Margin="0,0,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    FontSize="20"
+                    Text="One Series Per Day" />
+                <ToggleSwitch
+                    x:Name="oneSeriesSwitch"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="0,0,0,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    IsOn="{x:Bind ViewModel.Settings.OneSeriesPerDay}"
+                    Toggled="oneSeriesSwitch_Toggled" />
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>

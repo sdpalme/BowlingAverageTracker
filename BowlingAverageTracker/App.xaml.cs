@@ -4,6 +4,7 @@ using SQLite.Net;
 using SQLite.Net.Platform.WinRT;
 using System;
 using System.IO;
+using System.Linq;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation.Metadata;
@@ -44,6 +45,7 @@ namespace BowlingAverageTracker
 #endif
             initDatabase();
             ColorsViewModel.setBrushColors();
+            initNavigationSettings();
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
@@ -143,6 +145,23 @@ namespace BowlingAverageTracker
             }
         }
 
+        private void initNavigationSettings()
+        {
+            using (SQLiteConnection conn = BaseViewModel.getDBConnection())
+            {
+                NavigationSettings settings = conn.Query<NavigationSettings>(
+                    "select * from NavigationSettings").First();
+                if (settings != null)
+                {
+                    BaseViewModel.NavigationSettings = settings;
+                }
+                else
+                {
+                    BaseViewModel.NavigationSettings = new NavigationSettings();
+                }
+            }
+        }
+
         private void setupBackButton(Frame rootFrame)
         {
             // Register a handler for BackRequested events and set the
@@ -150,7 +169,7 @@ namespace BowlingAverageTracker
             SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
             if (!ApiInformation.IsTypePresent("Windows.Phone.UI.Input.HardwareButtons"))
             {
-                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = rootFrame.CanGoBack ? 
+                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = rootFrame.CanGoBack ?
                     AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
             }
         }

@@ -110,6 +110,7 @@
     <Compile Include="Dto\FloatWrapper.cs" />
     <Compile Include="Dto\Game.cs" />
     <Compile Include="Dto\League.cs" />
+    <Compile Include="Dto\NavigationSettings.cs" />
     <Compile Include="Dto\Series.cs" />
     <Compile Include="Dto\ColorSettings.cs" />
     <Compile Include="Dto\TableInfo.cs" />
@@ -120,6 +121,9 @@
       <DependentUpon>EnterScoresPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dto\ItemClickEventArgsConverter.cs" />
+    <Compile Include="Pages\Options\NavigationPage.xaml.cs">
+      <DependentUpon>NavigationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Options\ColorsPage.xaml.cs">
       <DependentUpon>ColorsPage.xaml</DependentUpon>
     </Compile>
@@ -147,6 +151,7 @@
     </Compile>
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\ColorPickerViewModel.cs" />
+    <Compile Include="ViewModel\NavigationViewModel.cs" />
     <Compile Include="ViewModel\ColorsViewModel.cs" />
     <Compile Include="ViewModel\GameRowNumberConverter.cs" />
     <Compile Include="ViewModel\StatisticsViewModel.cs" />
@@ -207,6 +212,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Options\NavigationPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Pages\Options\ColorsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -251,7 +260,6 @@
       <Name>SQLite for Universal Windows Platform %28SQLite.UWP.2015, Version=3.15.2%29</Name>
     </SDKReference>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

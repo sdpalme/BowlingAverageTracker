@@ -31,6 +31,7 @@ namespace BowlingAverageTracker.ViewModel
         {
             using (SQLiteConnection conn = getDBConnection())
             {
+                conn.BeginTransaction();
                 conn.Execute(Game.deleteByBowlerQuery, bowler.Id);
                 conn.Execute(Series.deleteByBowlerQuery, bowler.Id);
                 conn.Execute(League.deleteByBowlerQuery, bowler.Id);
@@ -47,8 +48,17 @@ namespace BowlingAverageTracker.ViewModel
                 return selectItemCommand ?? (selectItemCommand = new RelayCommand<Bowler>((selectedBowler) =>
                 {
                     if (selectedBowler == null)
+                    {
                         return;
-                    Navigate<SelectLeagueViewModel>(selectedBowler);
+                    }
+                    if (BaseViewModel.NavigationSettings.SkipLeaguePage)
+                    {
+                        Navigate<SelectSeriesViewModel>(selectedBowler);
+                    }
+                    else
+                    {
+                        Navigate<SelectLeagueViewModel>(selectedBowler);
+                    }
                 }));
             }
         }

@@ -16,6 +16,7 @@ namespace BowlingAverageTracker.ViewModel
             SimpleIoc.Default.Register<SelectSeriesViewModel>();
             SimpleIoc.Default.Register<EnterScoresViewModel>();
             SimpleIoc.Default.Register<EditNameViewModel>();
+            SimpleIoc.Default.Register<NavigationViewModel>();
         }
 
         public SelectBowlerViewModel SelectBowlerPage
@@ -41,6 +42,11 @@ namespace BowlingAverageTracker.ViewModel
         public StatisticsViewModel StatisticsPage
         {
             get { return ServiceLocator.Current.GetInstance<StatisticsViewModel>(); }
+        }
+
+        public NavigationViewModel NavigationPage
+        {
+            get { return ServiceLocator.Current.GetInstance<NavigationViewModel>(); }
         }
     }
 
@@ -73,6 +79,7 @@ namespace BowlingAverageTracker.ViewModel
             service.Configure(typeof(BackupPage).FullName, typeof(BackupPage));
             service.Configure(typeof(ColorsViewModel).FullName, typeof(ColorsPage));
             service.Configure(typeof(ColorPickerPage).FullName, typeof(ColorPickerPage));
+            service.Configure(typeof(NavigationViewModel).FullName, typeof(NavigationPage));
 
             return service;
         }

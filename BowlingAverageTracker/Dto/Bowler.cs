@@ -1,4 +1,5 @@
-﻿using SQLite.Net;
+﻿using BowlingAverageTracker.ViewModel;
+using SQLite.Net;
 using SQLite.Net.Attributes;
 using SQLiteNetExtensions.Attributes;
 using System;
@@ -14,6 +15,10 @@ namespace BowlingAverageTracker.Dto
         private static readonly string averageQuery = "select avg(Score) as Value from Game where SeriesId in " +
                                              "(select Id from Series where LeagueId in " +
                                              "(select Id from League where BowlerId = ?))";
+        private static readonly string seriesCountQuery = "select count(*) as Value from Series where LeagueId in " +
+            "(select Id from League where BowlerId = ?)";
+        private static readonly string gameCountQuery = "select count(*) as Value from Game where SeriesId in " +
+            "(select Id from Series where LeagueId in (select Id from League where BowlerId = ?))";
 
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
@@ -49,7 +54,18 @@ namespace BowlingAverageTracker.Dto
         {
             get
             {
-                return String.Format("     Overall Average: {0:0.00}\n", Average);
+                string text = String.Format("     Overall Average: {0:0.00}\n", Average);
+                if (BaseViewModel.NavigationSettings.SkipLeaguePage)
+                {
+                    using (SQLiteConnection conn = BaseViewModel.getDBConnection())
+                    {
+                        int seriesCount = conn.Query<IntWrapper>(seriesCountQuery, Id).First().Value;
+                        int gameCount = conn.Query<IntWrapper>(gameCountQuery, Id).First().Value;
+                        text += "     Number of Series: " + seriesCount + "\n";
+                        text += "     Number of Games: " + gameCount + "\n";
+                    }
+                }
+                return text;
             }
         }
     }

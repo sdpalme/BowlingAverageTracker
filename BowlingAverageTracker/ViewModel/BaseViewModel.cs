@@ -16,6 +16,7 @@ namespace BowlingAverageTracker.ViewModel
         public static string DbFileName { get { return dbFileName; } }
         private readonly static string dbPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, dbFileName);
         public static string DbPath { get { return dbPath; } }
+        public static NavigationSettings NavigationSettings { get; set; }
 
         public BaseViewModel()
         {
@@ -75,6 +76,7 @@ namespace BowlingAverageTracker.ViewModel
                 conn.CreateTable<Series>();
                 conn.CreateTable<Game>();
                 conn.CreateTable<ColorSettings>();
+                conn.CreateTable<NavigationSettings>();
                 int count = conn.Query<IntWrapper>("select count(*) as Value from ColorSettings").First().Value;
                 if (count == 0)
                 {
@@ -82,6 +84,15 @@ namespace BowlingAverageTracker.ViewModel
                     s.Id = 0;
                     s.BackgroundColor = 0;
                     s.TextColor = 0xFF000000;
+                    new BaseViewModel().create(s);
+                }
+                count = conn.Query<IntWrapper>("select count(*) as Value from NavigationSettings").First().Value;
+                if (count == 0)
+                {
+                    NavigationSettings s = new NavigationSettings();
+                    s.Id = 0;
+                    s.OneSeriesPerDay = false;
+                    s.SkipLeaguePage = false;
                     new BaseViewModel().create(s);
                 }
                 conn.Execute("vacuum");
