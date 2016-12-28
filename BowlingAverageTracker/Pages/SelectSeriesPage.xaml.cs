@@ -74,6 +74,11 @@ namespace BowlingAverageTracker
             ViewModel.Series.Remove(series);
         }
 
+        private void StatsButton_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.Navigate<StatisticsViewModel>(ViewModel.League.Bowler);
+        }
+
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
             ViewModel.Navigate<SelectBowlerViewModel>();
@@ -85,10 +90,12 @@ namespace BowlingAverageTracker
             if (e.Parameter is League)
             {
                 ViewModel.League = e.Parameter as League;
+                this.StatsButton.Width = 0;
             }
             if (e.Parameter is Bowler)
             {
                 ViewModel.initDefaultLeague(e.Parameter as Bowler);
+                this.StatsButton.Width = 62;
             }
             ViewModel.populateSeries();
         }
