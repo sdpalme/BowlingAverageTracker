@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="201299C3DF150.BowlingAverageTracker" Publisher="CN=BBA86711-6DAA-4CEA-A07A-5930A6C8FF9A" Version="1.0.19.0" />
+  <Identity Name="201299C3DF150.BowlingAverageTracker" Publisher="CN=BBA86711-6DAA-4CEA-A07A-5930A6C8FF9A" Version="1.0.21.0" />
   <mp:PhoneIdentity PhoneProductId="7bcd6e63-e403-42b9-89fc-05c343fe4bc7" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Bowling Average Tracker</DisplayName>

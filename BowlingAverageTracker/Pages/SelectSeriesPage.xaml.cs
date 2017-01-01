@@ -27,11 +27,12 @@ namespace BowlingAverageTracker
 
         private void AddSeries(object sender, RoutedEventArgs e)
         {
-            DateTimeOffset now = new DateTimeOffset(DateTime.Now.ToUniversalTime());
+            DateTimeOffset now = new DateTimeOffset(DateTime.Now);
             Series series = null;
             if (BaseViewModel.NavigationSettings.OneSeriesPerDay)
             {
                 DateTimeOffset dayStart = new DateTimeOffset(now.Year, now.Month, now.Day, 0, 0, 0, TimeSpan.Zero);
+                dayStart = dayStart.Subtract(TimeZoneInfo.Local.GetUtcOffset(DateTime.Now));
                 DateTimeOffset nextDayStart = dayStart.AddDays(1.0);
                 using (SQLiteConnection conn = BaseViewModel.getDBConnection())
                 {

@@ -62,7 +62,7 @@ namespace BowlingAverageTracker.Dto
                         int seriesCount = conn.Query<IntWrapper>(seriesCountQuery, Id).First().Value;
                         int gameCount = conn.Query<IntWrapper>(gameCountQuery, Id).First().Value;
                         text += "     Number of Series: " + seriesCount + "\n";
-                        text += "     Number of Games: " + gameCount + "\n";
+                        text += "     Number of Games: " + gameCount;
                     }
                 }
                 return text;
