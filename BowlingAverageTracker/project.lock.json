@@ -25238,23 +25238,22 @@
     "UAP,Version=v10.0.10240": []
   },
   "packageFolders": {
-    "C:\\Users\\sdpal\\.nuget\\packages\\": {}
+    "C:\\Users\\Sam\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
-      "projectUniqueName": "C:\\Users\\sdpal\\Source\\Repos\\BowlingAverageTracker\\BowlingAverageTracker\\BowlingAverageTracker.csproj",
+      "projectUniqueName": "C:\\Users\\Sam\\Documents\\Visual Studio 2017\\Projects\\BowlingAverageTracker\\BowlingAverageTracker\\BowlingAverageTracker.csproj",
       "projectName": "BowlingAverageTracker",
-      "projectPath": "C:\\Users\\sdpal\\Source\\Repos\\BowlingAverageTracker\\BowlingAverageTracker\\BowlingAverageTracker.csproj",
-      "projectJsonPath": "C:\\Users\\sdpal\\Source\\Repos\\BowlingAverageTracker\\BowlingAverageTracker\\project.json",
-      "packagesPath": "C:\\Users\\sdpal\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sdpal\\Source\\Repos\\BowlingAverageTracker\\BowlingAverageTracker\\obj\\",
+      "projectPath": "C:\\Users\\Sam\\Documents\\Visual Studio 2017\\Projects\\BowlingAverageTracker\\BowlingAverageTracker\\BowlingAverageTracker.csproj",
+      "projectJsonPath": "C:\\Users\\Sam\\Documents\\Visual Studio 2017\\Projects\\BowlingAverageTracker\\BowlingAverageTracker\\project.json",
+      "packagesPath": "C:\\Users\\Sam\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Sam\\Documents\\Visual Studio 2017\\Projects\\BowlingAverageTracker\\BowlingAverageTracker\\obj\\",
       "projectStyle": "ProjectJson",
       "configFilePaths": [
-        "C:\\Users\\sdpal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Sam\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       }
     },
